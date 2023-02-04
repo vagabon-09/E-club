@@ -62,48 +62,115 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <EditText
-                android:id="@+id/login_email_id"
+                android:id="@+id/editText"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
                 android:autofillHints="emailAddress"
-                android:hint="@string/email_hint"
+                android:background="@drawable/input_field_background"
+                android:hint="@string/placeholder"
                 android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                tools:ignore="RtlSymmetry" />
 
+
+            <TextView
+                android:id="@+id/password_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:fontFamily="@font/exo2"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="@+id/editText"
+                app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+            <EditText
+                android:id="@+id/login_passwordId"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
+                android:autofillHints="password"
+                android:background="@drawable/input_field_background"
+                android:hint="@string/placeholder_password"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/password_textView"
+                app:layout_constraintTop_toBottomOf="@+id/password_textView"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/forgotPasswordId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/exo2"
+                android:text="@string/forgot_password"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/login_passwordId"
+                app:layout_constraintTop_toBottomOf="@+id/login_passwordId" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginBtnId"
+                android:layout_width="120sp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/login_btn_background"
+                android:text="@string/login_btn"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/login_passwordId"
+                app:layout_constraintHorizontal_bias="0.458"
+                app:layout_constraintStart_toStartOf="@+id/login_passwordId"
+                app:layout_constraintTop_toBottomOf="@+id/login_passwordId"
+                app:layout_constraintVertical_bias="0.333" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="4dp"
                 android:fontFamily="@font/exo2"
-                android:text="@string/password"
+                android:text="@string/member"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
-                app:layout_constraintEnd_toEndOf="@+id/login_email_id"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/login_email_id"
-                app:layout_constraintTop_toBottomOf="@+id/login_email_id" />
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/joinRequest"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginBtnId"
+                app:layout_constraintVertical_bias="0.264" />
 
-            <EditText
-                android:id="@+id/login_password_id"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/joinRequest"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
-                android:autofillHints="password"
-                android:hint="@string/enter_password"
-                android:inputType="textPassword"
-
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/exo2"
+                android:text="@string/join_request"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

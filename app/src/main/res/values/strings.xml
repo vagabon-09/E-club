@@ -6,7 +6,13 @@
     <string name="app_motive">Manage your club with us</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
-    <string name="email_hint">Enter your email id</string>
+    <string name="email_hint">E-mail</string>
+    <string name="placeholder">ex:xyz@gmail.com</string>
     <string name="password">Password</string>
     <string name="enter_password">Enter password</string>
+    <string name="forgot_password">Forgot password ?</string>
+    <string name="login_btn">Login</string>
+    <string name="member">I want to a member ?</string>
+    <string name="join_request">Request</string>
+    <string name="placeholder_password">password</string>
 </resources>
