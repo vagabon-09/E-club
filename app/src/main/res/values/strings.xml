@@ -16,4 +16,11 @@
     <string name="join_request">Request</string>
     <string name="placeholder_password">password</string>
     <string name="back_button">back button form</string>
+    <string name="organis_event">Organis Event</string>
+    <string name="members">Members</string>
+    <string name="add_user">Add User</string>
+    <string name="event">Events</string>
+    <string name="note">Note</string>
+    <string name="donate">Donate</string>
+    <string name="settings">Settings</string>
 </resources>

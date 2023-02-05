@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,80 +8,398 @@
     tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/club_background_image_id"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_180sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/club_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius_bottom_left="@dimen/_120sdp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
 
         <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:alpha="0.6"
-            android:background="@drawable/fade_iamge_back"
-            app:layout_constraintBottom_toBottomOf="@+id/club_background_image_id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/club_background_image_id"
-            app:layout_constraintTop_toTopOf="@+id/club_background_image_id" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/backBtnId"-->
-        <!--            android:layout_width="@dimen/_28sdp"-->
-        <!--            android:layout_height="@dimen/_35sdp"-->
-        <!--            android:layout_marginStart="@dimen/_10sdp"-->
-        <!--            android:layout_marginTop="@dimen/_10sdp"-->
-        <!--            android:scaleType="center"-->
-        <!--            android:src="@drawable/back_white_24"-->
-        <!--            app:layout_constraintBottom_toBottomOf="@+id/textView7"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            android:contentDescription="@string/back_button" />-->
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/exo2"
-            android:gravity="center"
-            android:text="@string/club_name"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_23sdp"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:background="@drawable/light_blue_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            app:cardCornerRadius="@dimen/_12sdp"
-            app:cardElevation="0dp"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/club_background_image_id">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/club_background_image_id"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_180sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/club_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius_bottom_left="@dimen/_120sdp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:background="@drawable/fade_iamge_back"
+                app:layout_constraintBottom_toBottomOf="@+id/club_background_image_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/club_background_image_id"
+                app:layout_constraintTop_toTopOf="@+id/club_background_image_id" />
+
+            <!--        <ImageView-->
+            <!--            android:id="@+id/backBtnId"-->
+            <!--            android:layout_width="@dimen/_28sdp"-->
+            <!--            android:layout_height="@dimen/_35sdp"-->
+            <!--            android:layout_marginStart="@dimen/_10sdp"-->
+            <!--            android:layout_marginTop="@dimen/_10sdp"-->
+            <!--            android:scaleType="center"-->
+            <!--            android:src="@drawable/back_white_24"-->
+            <!--            app:layout_constraintBottom_toBottomOf="@+id/textView7"-->
+            <!--            app:layout_constraintStart_toStartOf="parent"-->
+            <!--            app:layout_constraintTop_toTopOf="parent"-->
+            <!--            android:contentDescription="@string/back_button" />-->
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/exo2"
+                android:gravity="center"
+                android:text="@string/club_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/club_background_image_id">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:layout_constraintEnd_toStartOf="@+id/memberBtn"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:id="@+id/eventBtnId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:background="@drawable/deep_green_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/event_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/eventBtnId"
+                            app:layout_constraintEnd_toEndOf="@+id/eventBtnId"
+                            app:layout_constraintStart_toStartOf="@+id/eventBtnId"
+                            app:layout_constraintTop_toTopOf="@+id/eventBtnId" />
+
+                        <TextView
+                            android:id="@+id/event_organise_icon_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/event"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/eventBtnId"
+                            app:layout_constraintStart_toStartOf="@+id/eventBtnId"
+                            app:layout_constraintTop_toBottomOf="@+id/eventBtnId"
+                            tools:ignore="TextSizeCheck" />
 
 
-</ScrollView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/memberBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toStartOf="@+id/AddUseIBtnId"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:id="@+id/memberCircleId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/deep_blue_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/memberIconId"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/user_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/memberCircleId"
+                            app:layout_constraintEnd_toEndOf="@+id/memberCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/memberCircleId"
+                            app:layout_constraintTop_toTopOf="@+id/memberCircleId" />
+
+                        <TextView
+                            android:id="@+id/memberTitleId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/members"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/memberCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/memberCircleId"
+                            app:layout_constraintTop_toBottomOf="@+id/memberCircleId"
+                            tools:ignore="TextSizeCheck" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/AddUseIBtnId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/memberBtn"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:id="@+id/userCircleId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/light_orange_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/addUserIconId"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/request_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/userCircleId"
+                            app:layout_constraintEnd_toEndOf="@+id/userCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/userCircleId"
+                            app:layout_constraintTop_toTopOf="@+id/userCircleId" />
+
+                        <TextView
+                            android:id="@+id/addUserTitleId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/add_user"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/userCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/userCircleId"
+                            app:layout_constraintTop_toBottomOf="@+id/userCircleId"
+                            tools:ignore="TextSizeCheck" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/NoteTakingBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                        <View
+                            android:id="@+id/noteCircleId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:background="@drawable/yellow_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/noteIconId"
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/note_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/noteCircleId"
+                            app:layout_constraintEnd_toEndOf="@+id/noteCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/noteCircleId"
+                            app:layout_constraintTop_toTopOf="@+id/noteCircleId" />
+
+                        <TextView
+                            android:id="@+id/noteTitleId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/note"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/noteCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/noteCircleId"
+                            app:layout_constraintTop_toBottomOf="@+id/noteCircleId"
+                            tools:ignore="TextSizeCheck" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/DonateBtnId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/memberBtn"
+                        app:layout_constraintStart_toStartOf="@+id/memberBtn"
+                        app:layout_constraintTop_toBottomOf="@+id/memberBtn">
+
+                        <View
+                            android:id="@+id/donateCircleId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:background="@drawable/light_green_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/donateIconId"
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/rupee_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/donateCircleId"
+                            app:layout_constraintEnd_toEndOf="@+id/donateCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/donateCircleId"
+                            app:layout_constraintTop_toTopOf="@+id/donateCircleId" />
+
+                        <TextView
+                            android:id="@+id/donateTitleId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/donate"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/donateCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/donateCircleId"
+                            app:layout_constraintTop_toBottomOf="@+id/donateCircleId"
+                            tools:ignore="TextSizeCheck" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/SettingBtnId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/AddUseIBtnId"
+                        app:layout_constraintStart_toStartOf="@+id/AddUseIBtnId"
+                        app:layout_constraintTop_toBottomOf="@+id/AddUseIBtnId">
+
+                        <View
+                            android:id="@+id/settingCircleId"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:background="@drawable/deep_ash_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/settingIconId"
+                            android:layout_width="@dimen/_23sdp"
+                            android:layout_height="@dimen/_23sdp"
+                            android:src="@drawable/settings_white_512"
+                            app:layout_constraintBottom_toBottomOf="@+id/settingCircleId"
+                            app:layout_constraintEnd_toEndOf="@+id/settingCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/settingCircleId"
+                            app:layout_constraintTop_toTopOf="@+id/settingCircleId" />
+
+                        <TextView
+                            android:id="@+id/settingTitleId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/exo2"
+                            android:text="@string/settings"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/settingCircleId"
+                            app:layout_constraintStart_toStartOf="@+id/settingCircleId"
+                            app:layout_constraintTop_toBottomOf="@+id/settingCircleId"
+                            tools:ignore="TextSizeCheck" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
