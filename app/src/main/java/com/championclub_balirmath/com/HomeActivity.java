@@ -24,10 +24,10 @@ public class HomeActivity extends AppCompatActivity {
         eventCardView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         modelArrayList = new ArrayList<>();
         modelArrayList.add(new EventCardModel("Blood Donation Camp", "Akash Bhadra", "10/12/23"));
-        modelArrayList.add(new EventCardModel("Blood Donation Camp", "Akash Bhadra", "10/12/23"));
-        modelArrayList.add(new EventCardModel("Blood Donation Camp", "Akash Bhadra", "10/12/23"));
-        modelArrayList.add(new EventCardModel("Blood Donation Camp", "Akash Bhadra", "10/12/23"));
-        modelArrayList.add(new EventCardModel("Blood Donation Camp", "Akash Bhadra", "10/12/23"));
+        modelArrayList.add(new EventCardModel("Swrasati Puja", "Akash Bhadra", "10/12/23"));
+        modelArrayList.add(new EventCardModel("Holi", "Akash Bhadra", "10/12/23"));
+        modelArrayList.add(new EventCardModel("Sitala Puja", "Akash Bhadra", "10/12/23"));
+        modelArrayList.add(new EventCardModel("Kali Puja", "Pabitra Biswas", "10/12/23"));
         adapter = new EventCardAdapter(modelArrayList);
         eventCardView.setAdapter(adapter);
     }

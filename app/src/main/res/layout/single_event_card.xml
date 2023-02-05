@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/_15sdp"
+    android:layout_marginEnd="@dimen/_15sdp"
     app:cardCornerRadius="@dimen/_15sdp"
     app:cardPreventCornerOverlap="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/deep_green">
@@ -51,6 +54,7 @@
             android:id="@+id/eventDateId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
             android:fontFamily="@font/exo2"
             android:text="@string/event_date"
             android:textColor="@color/white"
@@ -70,7 +74,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintEnd_toStartOf="@+id/eventOrganiserNameId"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eventTitleId" />
 
@@ -78,6 +83,7 @@
             android:id="@+id/eventOrganiserNameId"
             android:layout_width="90dp"
             android:layout_height="16dp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:fontFamily="@font/exo2"
             android:text="@string/organiser_name"
             android:textColor="@color/white"
