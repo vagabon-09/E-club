@@ -10,4 +10,12 @@
     <color name="background">#D8FFF3</color>
     <color name="input_stoke">#69FED1</color>
     <color name="login_btn_color">#3AF0BA</color>
+    <color name="deep_green_circle">#0FB181</color>
+    <color name="deep_blue_circle">#3A8EF0</color>
+    <color name="light_orange_circle">#F0C83A</color>
+    <color name="yellow_circle">#F0DE3A</color>
+    <color name="light_green_circle">#53F03A</color>
+    <color name="deep_ash_circle">#5E5555</color>
+
+
 </resources>
