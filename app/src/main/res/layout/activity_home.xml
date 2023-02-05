@@ -7,6 +7,16 @@
     android:background="@color/background"
     tools:context=".HomeActivity">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/clubImageId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:scaleType="centerCrop"
+        style="@style/ShapeAppearanceOverlay.App.SelectedCornerCut"
+        android:src="@drawable/club_image"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
