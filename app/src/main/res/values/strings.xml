@@ -15,4 +15,5 @@
     <string name="member">I want to a member ?</string>
     <string name="join_request">Request</string>
     <string name="placeholder_password">password</string>
+    <string name="back_button">back button form</string>
 </resources>
