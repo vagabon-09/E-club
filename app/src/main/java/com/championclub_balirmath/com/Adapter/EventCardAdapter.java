@@ -16,6 +16,10 @@ import java.util.ArrayList;
 
 public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.MyViewHolder> {
 
+    public EventCardAdapter(ArrayList<EventCardModel> eventCardModels) {
+        this.eventCardModels = eventCardModels;
+    }
+
     ArrayList<EventCardModel> eventCardModels;
 
     @NonNull
