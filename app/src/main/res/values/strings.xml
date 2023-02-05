@@ -16,11 +16,18 @@
     <string name="join_request">Request</string>
     <string name="placeholder_password">password</string>
     <string name="back_button">back button form</string>
-    <string name="organis_event">Organis Event</string>
+    <string name="organise_event">Organise Event</string>
     <string name="members">Members</string>
     <string name="add_user">Add User</string>
     <string name="event">Events</string>
-    <string name="note">Note</string>
+    <string name="note">Notes</string>
     <string name="donate">Donate</string>
     <string name="settings">Settings</string>
+    <string name="active_events">Active Events</string>
+    <string name="event_title">Blood Donation</string>
+    <string name="organiser">Event Organiser :</string>
+    <string name="organiser_name">Rajesh Bhadra</string>
+    <string name="know_more">Know more</string>
+    <string name="event_date_title">Event Date :</string>
+    <string name="event_date">10 / 02 / 2023</string>
 </resources>

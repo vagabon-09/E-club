@@ -7,27 +7,14 @@
     android:background="@color/background"
     tools:context=".HomeActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97">
 
-        <View
-            android:layout_width="@dimen/_42sdp"
-            android:layout_height="@dimen/_42sdp"
-            android:background="@drawable/light_blue_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -67,32 +54,35 @@
             <!--            app:layout_constraintTop_toTopOf="parent"-->
             <!--            android:contentDescription="@string/back_button" />-->
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/exo2"
-                android:gravity="center"
-                android:text="@string/club_name"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_23sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView7"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                android:fontFamily="@font/exo2"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="@string/club_name"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="@dimen/_23sdp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/navigationCard"
                 android:layout_width="match_parent"
-                android:layout_height="200sp"
+                android:layout_height="@dimen/_140sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="0dp"
                 app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/club_background_image_id">
+                app:layout_constraintTop_toBottomOf="@+id/club_background_image_id"
+                app:layout_constraintVertical_bias="0.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -111,8 +101,8 @@
 
                         <View
                             android:id="@+id/eventBtnId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
@@ -123,8 +113,8 @@
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="@dimen/_23sdp"
-                            android:layout_height="@dimen/_23sdp"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
                             android:src="@drawable/event_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/eventBtnId"
                             app:layout_constraintEnd_toEndOf="@+id/eventBtnId"
@@ -139,7 +129,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/event"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/eventBtnId"
                             app:layout_constraintStart_toStartOf="@+id/eventBtnId"
@@ -160,8 +150,8 @@
 
                         <View
                             android:id="@+id/memberCircleId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/deep_blue_circle"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -170,8 +160,8 @@
 
                         <ImageView
                             android:id="@+id/memberIconId"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/user_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/memberCircleId"
                             app:layout_constraintEnd_toEndOf="@+id/memberCircleId"
@@ -186,7 +176,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/members"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/memberCircleId"
                             app:layout_constraintStart_toStartOf="@+id/memberCircleId"
@@ -208,8 +198,8 @@
 
                         <View
                             android:id="@+id/userCircleId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/light_orange_circle"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -218,8 +208,8 @@
 
                         <ImageView
                             android:id="@+id/addUserIconId"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/request_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/userCircleId"
                             app:layout_constraintEnd_toEndOf="@+id/userCircleId"
@@ -234,7 +224,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/add_user"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/userCircleId"
                             app:layout_constraintStart_toStartOf="@+id/userCircleId"
@@ -255,8 +245,8 @@
 
                         <View
                             android:id="@+id/noteCircleId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
@@ -267,8 +257,8 @@
 
                         <ImageView
                             android:id="@+id/noteIconId"
-                            android:layout_width="@dimen/_23sdp"
-                            android:layout_height="@dimen/_23sdp"
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
                             android:src="@drawable/note_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/noteCircleId"
                             app:layout_constraintEnd_toEndOf="@+id/noteCircleId"
@@ -283,7 +273,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/note"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/noteCircleId"
                             app:layout_constraintStart_toStartOf="@+id/noteCircleId"
@@ -305,8 +295,8 @@
 
                         <View
                             android:id="@+id/donateCircleId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
@@ -317,8 +307,8 @@
 
                         <ImageView
                             android:id="@+id/donateIconId"
-                            android:layout_width="@dimen/_23sdp"
-                            android:layout_height="@dimen/_23sdp"
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
                             android:src="@drawable/rupee_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/donateCircleId"
                             app:layout_constraintEnd_toEndOf="@+id/donateCircleId"
@@ -333,7 +323,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/donate"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/donateCircleId"
                             app:layout_constraintStart_toStartOf="@+id/donateCircleId"
@@ -354,8 +344,8 @@
 
                         <View
                             android:id="@+id/settingCircleId"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
@@ -366,8 +356,8 @@
 
                         <ImageView
                             android:id="@+id/settingIconId"
-                            android:layout_width="@dimen/_23sdp"
-                            android:layout_height="@dimen/_23sdp"
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
                             android:src="@drawable/settings_white_512"
                             app:layout_constraintBottom_toBottomOf="@+id/settingCircleId"
                             app:layout_constraintEnd_toEndOf="@+id/settingCircleId"
@@ -382,7 +372,7 @@
                             android:fontFamily="@font/exo2"
                             android:text="@string/settings"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/settingCircleId"
                             app:layout_constraintStart_toStartOf="@+id/settingCircleId"
@@ -397,9 +387,107 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/activeCardSlider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.578"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/navigationCard"
+                app:layout_constraintVertical_bias="0.0">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/light_green_circle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.06"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_13sdp"
+                        android:fontFamily="@font/exo2"
+                        android:text="@string/active_events"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view2"
+                        app:layout_constraintStart_toEndOf="@+id/view2"
+                        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/activeEventCardId"
+                        android:layout_width="@dimen/_240sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
 
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/light_blue_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/message_white_512"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <View
+            android:layout_width="@dimen/_5sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:background="@drawable/red_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35000002" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
