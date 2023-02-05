@@ -7,16 +7,50 @@
     android:background="@color/background"
     tools:context=".HomeActivity">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/clubImageId"
-        android:layout_width="match_parent"
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/club_background_image_id"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/_180sdp"
         android:scaleType="centerCrop"
-        style="@style/ShapeAppearanceOverlay.App.SelectedCornerCut"
         android:src="@drawable/club_image"
-
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius_bottom_left="@dimen/_120sdp" />
+
+    <View
+        android:alpha="0.6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fade_iamge_back"
+        app:layout_constraintBottom_toBottomOf="@+id/club_background_image_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/club_background_image_id"
+        app:layout_constraintTop_toTopOf="@+id/club_background_image_id" />
+
+    <ImageView
+        android:id="@+id/backBtnId"
+        android:layout_width="@dimen/_28sdp"
+        android:layout_height="30sp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/back_white_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/exo2"
+        android:gravity="center"
+        android:text="@string/club_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_23sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backBtnId"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
