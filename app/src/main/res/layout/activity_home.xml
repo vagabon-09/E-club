@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".HomeActivity">
+    tools:context=".Activity.HomeActivity">
 
 
     <ScrollView
@@ -435,8 +435,8 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/activeEventCardId"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_120sdp"
+                        android:layout_width="367dp"
+                        android:layout_height="161dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

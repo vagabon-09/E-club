@@ -1,18 +1,14 @@
-package com.championclub_balirmath.com;
+package com.championclub_balirmath.com.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.databinding.ActivityLoginBinding;
-
-import java.util.zip.Inflater;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,11 +19,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        //Removing top bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // Adding custom card background in card view
-        binding.cardBackgroundId.setBackgroundResource(R.drawable.login_card_background_shape);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//Removing top bar
+        binding.cardBackgroundId.setBackgroundResource(R.drawable.login_card_background_shape);// Adding custom card background in card view
         // Redirect to home page
         binding.joinRequest.setOnClickListener(new View.OnClickListener() {
             @Override

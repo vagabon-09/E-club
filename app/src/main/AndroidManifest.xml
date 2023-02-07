@@ -14,13 +14,34 @@
         android:theme="@style/Theme.ChampionClubBalirmath"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.NotesActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".Activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.EventsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MembersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DonateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ChattingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -30,4 +30,6 @@
     <string name="know_more">Know more</string>
     <string name="event_date_title">Event Date :</string>
     <string name="event_date">10 / 02 / 2023</string>
+    <string name="club_chat">Club Chat</string>
+    <string name="typing">Typing....</string>
 </resources>
