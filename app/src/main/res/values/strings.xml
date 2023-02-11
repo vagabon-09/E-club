@@ -32,4 +32,5 @@
     <string name="event_date">10 / 02 / 2023</string>
     <string name="club_chat">Club Chat</string>
     <string name="typing">Typing....</string>
+    <string name="profile">Profle</string>
 </resources>

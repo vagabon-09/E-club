@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        app:layout_constraintEnd_toStartOf="@+id/memberBtn"
+                        app:layout_constraintEnd_toStartOf="@+id/proflleBtn"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
@@ -140,10 +140,10 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/memberBtn"
+                        android:id="@+id/proflleBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toStartOf="@+id/AddUseIBtnId"
+                        app:layout_constraintEnd_toStartOf="@+id/ClubUsers"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
                         app:layout_constraintTop_toTopOf="parent">
@@ -174,7 +174,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
-                            android:text="@string/members"
+                            android:text="@string/profile"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
@@ -187,13 +187,13 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/AddUseIBtnId"
+                        android:id="@+id/ClubUsers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/memberBtn"
+                        app:layout_constraintStart_toEndOf="@+id/proflleBtn"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <View
@@ -222,7 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
-                            android:text="@string/add_user"
+                            android:text="@string/members"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
@@ -289,9 +289,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/memberBtn"
-                        app:layout_constraintStart_toStartOf="@+id/memberBtn"
-                        app:layout_constraintTop_toBottomOf="@+id/memberBtn">
+                        app:layout_constraintEnd_toEndOf="@+id/proflleBtn"
+                        app:layout_constraintStart_toStartOf="@+id/proflleBtn"
+                        app:layout_constraintTop_toBottomOf="@+id/proflleBtn">
 
                         <View
                             android:id="@+id/donateCircleId"
@@ -338,9 +338,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/AddUseIBtnId"
-                        app:layout_constraintStart_toStartOf="@+id/AddUseIBtnId"
-                        app:layout_constraintTop_toBottomOf="@+id/AddUseIBtnId">
+                        app:layout_constraintEnd_toEndOf="@+id/ClubUsers"
+                        app:layout_constraintStart_toStartOf="@+id/ClubUsers"
+                        app:layout_constraintTop_toBottomOf="@+id/ClubUsers">
 
                         <View
                             android:id="@+id/settingCircleId"
