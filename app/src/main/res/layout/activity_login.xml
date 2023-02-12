@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/Login_emailId"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -89,8 +89,8 @@
                 android:text="@string/password"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"
-                app:layout_constraintStart_toStartOf="@+id/editText"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintStart_toStartOf="@+id/Login_emailId"
+                app:layout_constraintTop_toBottomOf="@+id/Login_emailId" />
 
             <EditText
                 android:id="@+id/login_passwordId"

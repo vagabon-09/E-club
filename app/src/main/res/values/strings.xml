@@ -33,4 +33,5 @@
     <string name="club_chat">Club Chat</string>
     <string name="typing">Typing....</string>
     <string name="profile">Profle</string>
+    <string name="user_name">User Name</string>
 </resources>
