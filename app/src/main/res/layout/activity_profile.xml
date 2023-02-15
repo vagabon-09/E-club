@@ -31,4 +31,52 @@
         app:layout_constraintStart_toStartOf="@+id/ProfileImageId"
         app:layout_constraintTop_toBottomOf="@+id/ProfileImageId" />
 
+    <TextView
+        android:id="@+id/ProfileEmailId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo2"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/ProfileUserNameId"
+        app:layout_constraintStart_toStartOf="@+id/ProfileUserNameId"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileUserNameId" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="@+id/ProfileEmailId"
+        app:layout_constraintStart_toStartOf="@+id/ProfileEmailId"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileEmailId">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/logoutCardId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/logoutId"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/log_out"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/logoutId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

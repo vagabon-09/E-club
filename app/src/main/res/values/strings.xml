@@ -34,4 +34,5 @@
     <string name="typing">Typing....</string>
     <string name="profile">Profle</string>
     <string name="user_name">User Name</string>
+    <string name="chatting_edit_text">Enter new message...</string>
 </resources>

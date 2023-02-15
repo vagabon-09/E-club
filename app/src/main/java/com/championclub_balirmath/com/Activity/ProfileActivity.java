@@ -3,7 +3,9 @@ package com.championclub_balirmath.com.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.Model.ProfileModel;
@@ -21,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
-    private String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,15 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        binding.logoutCardId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(ProfileActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         fetchData();
     }
 
@@ -39,11 +50,14 @@ public class ProfileActivity extends AppCompatActivity {
         reference.child("Users").child(Objects.requireNonNull(mAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(ProfileActivity.this, snapshot.toString(), Toast.LENGTH_SHORT).show();
                 ProfileModel model = snapshot.getValue(ProfileModel.class);
                 assert model != null;
+                String name;
+                String email;
                 name = model.getUserName();
+                email = model.getUserEmail();
                 binding.ProfileUserNameId.setText(name);
+                binding.ProfileEmailId.setText(email);
 
             }
 
