@@ -21,7 +21,7 @@
     <color name="deep_green">#18634D</color>
     <color name="type_back_color">#DBDBDB</color>
     <color name="green_deep_color">#07A978</color>
-
+    <color name="sender_message_box_color">#AAFF9C</color>
 
 
 </resources>

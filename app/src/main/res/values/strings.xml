@@ -35,4 +35,11 @@
     <string name="profile">Profle</string>
     <string name="user_name">User Name</string>
     <string name="chatting_edit_text">Enter new message...</string>
+    <string name="sender_name">Rajesh Bhadra</string>
+    <string name="reciver_message_id">Hello! I am Rajesh Bhadra</string>
+    <string name="recive_time">12:30 pm</string>
+    <string name="SenderMessage">Hello! I am Rajesh Bhadra</string>
+    <string name="SenderTime">12:30 pm</string>
+    <string name="back_btn">group chat back button</string>
+    <string name="snd_message">send message image</string>
 </resources>

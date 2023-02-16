@@ -29,7 +29,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:contentDescription="@string/back_btn" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,10 +56,9 @@
         android:layout_below="@+id/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/_10sdp"
@@ -66,6 +66,8 @@
         android:layout_marginBottom="@dimen/_5sdp">
 
         <EditText
+            android:minHeight="@dimen/_35sdp"
+            android:maxHeight="@dimen/_100sdp"
             android:paddingTop="@dimen/_2sdp"
             android:paddingBottom="@dimen/_2sdp"
             android:id="@+id/messageEditId"
@@ -79,12 +81,14 @@
             app:layout_constraintEnd_toStartOf="@+id/view3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:autofillHints="no"
+            android:inputType="textMultiLine" />
 
         <View
             android:id="@+id/view3"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:background="@drawable/deep_green_circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,13 +96,14 @@
             app:layout_constraintVertical_bias="0.499" />
 
         <ImageView
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
             android:src="@drawable/right_send_white_512"
             app:layout_constraintBottom_toBottomOf="@+id/view3"
             app:layout_constraintEnd_toEndOf="@+id/view3"
             app:layout_constraintStart_toStartOf="@+id/view3"
-            app:layout_constraintTop_toTopOf="@+id/view3" />
+            app:layout_constraintTop_toTopOf="@+id/view3"
+            android:contentDescription="@string/snd_message" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
