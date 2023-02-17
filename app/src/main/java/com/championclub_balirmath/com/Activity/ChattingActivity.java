@@ -10,11 +10,13 @@ import android.os.Bundle;
 
 import com.championclub_balirmath.com.Adapter.GroupChatAdapter;
 import com.championclub_balirmath.com.Model.GroupChatModel;
+import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.databinding.ActivityChattingBinding;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -23,7 +25,10 @@ import java.util.Date;
 
 public class ChattingActivity extends AppCompatActivity {
     ActivityChattingBinding binding;
-    FirebaseDatabase database;
+    private FirebaseDatabase database;
+    private GroupChatAdapter adapter;
+    private String userName = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +43,11 @@ public class ChattingActivity extends AppCompatActivity {
     private void settingRecView() {
         database = FirebaseDatabase.getInstance(); // Fetching database instance
         final ArrayList<GroupChatModel> modelArrayList = new ArrayList<>();// Fetching all model array list
-        final GroupChatAdapter adapter = new GroupChatAdapter(modelArrayList, this);//accessing adapter
+        adapter = new GroupChatAdapter(modelArrayList, this);//accessing adapter
         binding.messageChattingRecView.setAdapter(adapter);// Setting adapter in recyclerview
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);// Declaring layout manager
         binding.messageChattingRecView.setLayoutManager(layoutManager);// Setting layout in recyclerview
-        getValue(modelArrayList, adapter);
+        getValue(modelArrayList, adapter);// This function is used to fetch data form database
     }
 
     private void getValue(ArrayList<GroupChatModel> modelArrayList, GroupChatAdapter adapter) {
@@ -54,6 +59,7 @@ public class ChattingActivity extends AppCompatActivity {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     GroupChatModel model = data.getValue(GroupChatModel.class);
                     modelArrayList.add(model);
+                    assert model != null;
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -76,20 +82,41 @@ public class ChattingActivity extends AppCompatActivity {
     }
 
     private void sendData() {
+
         String senderId = FirebaseAuth.getInstance().getUid();
         String message = binding.messageEditId.getText().toString();
-        GroupChatModel model = new GroupChatModel(message, senderId);
-        model.setTimestamp(new Date().getTime());
         binding.messageEditId.setText("");
-        database.getReference().child("club_chat")
-                .push()
-                .setValue(model)
-                .addOnSuccessListener(unused -> {
+        FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database1.getReference();
 
-                });
+        databaseReference.child("Users").child(senderId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ProfileModel model = snapshot.getValue(ProfileModel.class);
+                assert model != null;
+                userName = model.getUserName();
+                if (!userName.isEmpty()) {
+                    GroupChatModel model1 = new GroupChatModel(message, senderId, userName);
+                    model1.setTimestamp(new Date().getTime());
+                    DatabaseReference reference = database.getReference();
+
+
+                    database.getReference().child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> {
+                        binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }
 
 
 }
+
+

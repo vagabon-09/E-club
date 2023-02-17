@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.championclub_balirmath.com.Model.GroupChatModel;
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -44,10 +47,17 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (holder.getClass().equals(ReciverViewHolder.class)){
+        DateTime dateTime = new DateTime(); // Calling dateTime class for codeReusable
+        if (holder.getClass().equals(ReciverViewHolder.class)) {
+            String time = dateTime.Time(list.get(position).getTimestamp());
             ((ReciverViewHolder) holder).r_message.setText(list.get(position).getMessage());
-        }else {
-            ((SenderViewHolder)holder).s_message.setText(list.get(position).getMessage());
+            ((ReciverViewHolder) holder).r_time.setText(time);
+            ((ReciverViewHolder) holder).r_name.setText(list.get(position).getName());
+
+        } else {
+            String time = dateTime.Time(list.get(position).getTimestamp());
+            ((SenderViewHolder) holder).s_message.setText(list.get(position).getMessage());
+            ((SenderViewHolder) holder).s_time.setText(time);
         }
     }
 
@@ -77,12 +87,13 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
 
 
     public static class ReciverViewHolder extends RecyclerView.ViewHolder {
-        TextView r_message, r_time;
+        TextView r_message, r_time, r_name;
 
         public ReciverViewHolder(@NonNull View itemView) {
             super(itemView);
             r_message = itemView.findViewById(R.id.ReceiverMessageId);
             r_time = itemView.findViewById(R.id.reciverTimeId);
+            r_name = itemView.findViewById(R.id.ReciverNameId);
         }
     }
 }
