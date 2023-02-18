@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import com.championclub_balirmath.com.Adapter.GroupChatAdapter;
@@ -83,25 +84,26 @@ public class ChattingActivity extends AppCompatActivity {
 
     private void sendData() {
 
-        String senderId = FirebaseAuth.getInstance().getUid();
-        String message = binding.messageEditId.getText().toString();
-        binding.messageEditId.setText("");
-        FirebaseDatabase database1 = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database1.getReference();
+        String senderId = FirebaseAuth.getInstance().getUid();// Getting user id using firebase auth
+        String message = binding.messageEditId.getText().toString();//getting text from edit text
+        binding.messageEditId.setText("");//Setting edit text empty
+        FirebaseDatabase database1 = FirebaseDatabase.getInstance();//getting instance
+        DatabaseReference databaseReference = database1.getReference();// getting database reference
 
+        assert senderId != null;
         databaseReference.child("Users").child(senderId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ProfileModel model = snapshot.getValue(ProfileModel.class);
                 assert model != null;
                 userName = model.getUserName();
-                if (!userName.isEmpty()) {
-                    GroupChatModel model1 = new GroupChatModel(message, senderId, userName);
-                    model1.setTimestamp(new Date().getTime());
-                    DatabaseReference reference = database.getReference();
+                if (!userName.isEmpty()) {//until we get user name we are not perform any work
+                    GroupChatModel model1 = new GroupChatModel(message, senderId, userName);//sending all data to model class
+                    model1.setTimestamp(new Date().getTime());// setting data&time
+                    DatabaseReference reference = database.getReference();// getting database reference
 
 
-                    database.getReference().child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> {
+                    database.getReference().child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> { //sending value to firebase
                         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
                     });
                 }
@@ -109,6 +111,7 @@ public class ChattingActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChattingActivity.this, "Something is wrong try again la.", Toast.LENGTH_SHORT).show();
 
             }
         });
