@@ -1,9 +1,8 @@
 package com.championclub_balirmath.com.Adapter;
 
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import com.championclub_balirmath.com.Model.GroupChatModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.ArrayList;
