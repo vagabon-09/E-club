@@ -48,6 +48,7 @@ public class ChattingActivity extends AppCompatActivity {
         binding.messageChattingRecView.setAdapter(adapter);// Setting adapter in recyclerview
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);// Declaring layout manager
         binding.messageChattingRecView.setLayoutManager(layoutManager);// Setting layout in recyclerview
+        binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);
         getValue(modelArrayList, adapter);// This function is used to fetch data form database
     }
 

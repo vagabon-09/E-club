@@ -110,6 +110,7 @@
                 app:layout_constraintVertical_bias="0.07999998" />
 
             <ImageView
+                android:id="@+id/ClipBordId"
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_10sdp"

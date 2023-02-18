@@ -1,48 +1,30 @@
 package com.championclub_balirmath.com.Model;
 
 public class WalletModel {
-    private String senderName, paymentID;
-    private long sendingTime, payAmount;
+    private String upi;
+    private long totalAmount;
 
     public WalletModel() {
     }
 
-    public WalletModel(String senderName, String paymentID, long sendingTime, long payAmount) {
-        this.senderName = senderName;
-        this.paymentID = paymentID;
-        this.sendingTime = sendingTime;
-        this.payAmount = payAmount;
+    public WalletModel(String upi, long totalAmount) {
+        this.upi = upi;
+        this.totalAmount = totalAmount;
     }
 
-    public String getSenderName() {
-        return senderName;
+    public String getUpi() {
+        return upi;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setUpi(String upi) {
+        this.upi = upi;
     }
 
-    public String getPaymentID() {
-        return paymentID;
+    public long getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setPaymentID(String paymentID) {
-        this.paymentID = paymentID;
-    }
-
-    public long getSendingTime() {
-        return sendingTime;
-    }
-
-    public void setSendingTime(long sendingTime) {
-        this.sendingTime = sendingTime;
-    }
-
-    public long getPayAmount() {
-        return payAmount;
-    }
-
-    public void setPayAmount(long payAmount) {
-        this.payAmount = payAmount;
+    public void setTotalAmount(long totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

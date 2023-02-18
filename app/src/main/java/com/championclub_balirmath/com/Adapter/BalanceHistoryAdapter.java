@@ -10,23 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.championclub_balirmath.com.Model.WalletModel;
+import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
-public class WalletAdapter extends FirebaseRecyclerAdapter<WalletModel, WalletAdapter.MyViewHolder> {
+public class BalanceHistoryAdapter extends FirebaseRecyclerAdapter<BalanceHistoryModal, BalanceHistoryAdapter.MyViewHolder> {
 
 
-    public WalletAdapter(@NonNull FirebaseRecyclerOptions<WalletModel> options) {
+    public BalanceHistoryAdapter(@NonNull FirebaseRecyclerOptions<BalanceHistoryModal> options) {
         super(options);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull WalletModel model) {
+    protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull BalanceHistoryModal model) {
         DateTime dT = new DateTime();
         String dayTime = dT.DayTime(model.getSendingTime());
         holder.t_name.setText(model.getSenderName());

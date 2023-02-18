@@ -43,7 +43,7 @@
     <string name="back_btn">group chat back button</string>
     <string name="snd_message">send message image</string>
     <string name="club_wallet">Club Wallet</string>
-    <string name="balance">10000</string>
+    <string name="balance">000</string>
     <string name="donate_upi">UPI: 8388071823@paytm</string>
     <string name="pay_now">Pay Now</string>
     <string name="balance_history">Balance History</string>
