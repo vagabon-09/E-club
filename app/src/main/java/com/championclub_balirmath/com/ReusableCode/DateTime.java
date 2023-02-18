@@ -12,4 +12,11 @@ public class DateTime {
         String time = simpleDateFormat.format(date);
         return time;
     }
+
+   public String DayTime(long timeStamp) {
+        Date date = new Date(timeStamp);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE, hh:mm a");//EEEE represent full day name and hh represent hour and mm represent minute and a represent am/pm
+        String time = simpleDateFormat.format(date);
+        return time;
+    }
 }

@@ -1,55 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_40sdp">
+    android:layout_height="@dimen/_40sdp"
+    android:layout_margin="@dimen/_3sdp"
+    android:background="@color/white"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardPreventCornerOverlap="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:layout_marginTop="@dimen/_5sdp"
             android:id="@+id/DonateHistoryNameId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/donateHistoryName"
             android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textView14"
+            app:layout_constraintEnd_toStartOf="@+id/DonateAmountId"
             app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/DonateAmountId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="@string/donate_pay_amount"
             android:textColor="@color/light_green_circle"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/DonateHistoryNameId"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/DonateHistoryNameId" />
 
         <TextView
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:id="@+id/DonateTimeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/monday_10_30_pm"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView14"
+            app:layout_constraintEnd_toStartOf="@+id/DonateAmountId"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/DonateHistoryNameId"
             app:layout_constraintTop_toBottomOf="@+id/DonateHistoryNameId" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
