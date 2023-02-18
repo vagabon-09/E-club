@@ -42,4 +42,12 @@
     <string name="SenderTime">12:30 pm</string>
     <string name="back_btn">group chat back button</string>
     <string name="snd_message">send message image</string>
+    <string name="club_wallet">Club Wallet</string>
+    <string name="balance">10000</string>
+    <string name="donate_upi">UPI: 8388071823@paytm</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="balance_history">Balance History</string>
+    <string name="donateHistoryName">Rajesh Bhadra</string>
+    <string name="donate_pay_amount">+ ₹250</string>
+    <string name="monday_10_30_pm">Monday, 10:30 PM</string>
 </resources>
