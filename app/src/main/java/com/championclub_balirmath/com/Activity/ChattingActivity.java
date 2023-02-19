@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class ChattingActivity extends AppCompatActivity {
     ActivityChattingBinding binding;
@@ -48,8 +49,9 @@ public class ChattingActivity extends AppCompatActivity {
         binding.messageChattingRecView.setAdapter(adapter);// Setting adapter in recyclerview
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);// Declaring layout manager
         binding.messageChattingRecView.setLayoutManager(layoutManager);// Setting layout in recyclerview
-        binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);
         getValue(modelArrayList, adapter);// This function is used to fetch data form database
+//        int position = Objects.requireNonNull(binding.messageChattingRecView.getAdapter()).getItemCount() - 1;
+//        binding.messageChattingRecView.scrollToPosition(position);
     }
 
     private void getValue(ArrayList<GroupChatModel> modelArrayList, GroupChatAdapter adapter) {
@@ -57,7 +59,7 @@ public class ChattingActivity extends AppCompatActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                modelArrayList.clear();
+//                modelArrayList.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
                     GroupChatModel model = data.getValue(GroupChatModel.class);
                     modelArrayList.add(model);
@@ -120,7 +122,11 @@ public class ChattingActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
+        super.onResume();
+    }
 }
 
 

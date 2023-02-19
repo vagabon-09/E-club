@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.championclub_balirmath.com.Adapter.EventCardAdapter;
 import com.championclub_balirmath.com.Model.EventCardModel;
+import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<EventCardModel> modelArrayList;
     ActivityHomeBinding binding;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         cardRecView(); // This function is used for sending data to card recycler view in home page
         buttonCLicked();
+
 
     }
 
@@ -61,8 +67,9 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         binding.DonateBtnId.setOnClickListener(v -> { // This button for redirecting homepage to Settings page
-            Intent intent = new Intent(HomeActivity.this, DonateActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(HomeActivity.this, DonateActivity.class);
+//            startActivity(intent);
+            Toast.makeText(this, "This option is not available now", Toast.LENGTH_SHORT).show();
         });
 
 

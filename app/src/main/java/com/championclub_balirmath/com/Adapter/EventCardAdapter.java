@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.championclub_balirmath.com.Activity.ChattingActivity;
 import com.championclub_balirmath.com.Activity.KnowMoreActivity;
 import com.championclub_balirmath.com.Model.EventCardModel;
 import com.championclub_balirmath.com.R;
@@ -19,12 +20,12 @@ import com.championclub_balirmath.com.R;
 import java.util.ArrayList;
 
 public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.MyViewHolder> {
+    ArrayList<EventCardModel> eventCardModels;
 
     public EventCardAdapter(ArrayList<EventCardModel> eventCardModels) {
         this.eventCardModels = eventCardModels;
     }
 
-    ArrayList<EventCardModel> eventCardModels;
 
     @NonNull
     @Override
@@ -39,7 +40,9 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.MyVi
         holder.EventOrganiserName.setText(eventCardModels.get(position).getEventOrganiserName());
         holder.EventDate.setText(eventCardModels.get(position).getEventDate());
         holder.knowMore.setOnClickListener(v -> {
-            Toast.makeText(holder.EventDate.getContext(), "Yes clicked...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(holder.EventDate.getContext(), KnowMoreActivity.class);
+            holder.EventDate.getContext().startActivity(intent);
+
         });
     }
 

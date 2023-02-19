@@ -50,4 +50,12 @@
     <string name="donateHistoryName">Rajesh Bhadra</string>
     <string name="donate_pay_amount">+ ₹250</string>
     <string name="monday_10_30_pm">Monday, 10:30 PM</string>
+    <string name="eventPageName">Kali Pujo</string>
+    <string name="date">Date: 12/03/23</string>
+    <string name="organiserNameId">Organiser: Rajesh Bhadra</string>
+    <string name="participate">Participate</string>
+    <string name="all_member">All Participated Member</string>
+    <string name="participator_name">Rajesh Bhadra</string>
+    <string name="event_card">Create Event</string>
+    <string name="event_name">Event Name</string>
 </resources>

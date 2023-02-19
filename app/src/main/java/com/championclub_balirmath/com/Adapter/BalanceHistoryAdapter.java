@@ -30,7 +30,7 @@ public class BalanceHistoryAdapter extends FirebaseRecyclerAdapter<BalanceHistor
         DateTime dT = new DateTime();
         String dayTime = dT.DayTime(model.getSendingTime());
         holder.t_name.setText(model.getSenderName());
-        holder.t_amount.setText("+ ₹"+model.getPayAmount()/100);
+        holder.t_amount.setText("+ ₹" + model.getPayAmount() / 100);
         holder.t_time.setText(dayTime);
     }
 
