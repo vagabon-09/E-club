@@ -78,5 +78,6 @@ public class KnowMoreActivity extends AppCompatActivity {
         Intent intent = new Intent(KnowMoreActivity.this, AlarmReceiver.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(KnowMoreActivity.this, ALARM_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarm_time, pendingIntent);
+
     }
 }

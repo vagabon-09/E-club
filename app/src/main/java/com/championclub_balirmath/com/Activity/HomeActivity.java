@@ -2,18 +2,20 @@ package com.championclub_balirmath.com.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.championclub_balirmath.com.Adapter.EventCardAdapter;
 import com.championclub_balirmath.com.Model.EventCardModel;
 import com.championclub_balirmath.com.databinding.ActivityHomeBinding;
+
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     EventCardAdapter adapter;
     ArrayList<EventCardModel> modelArrayList;
     ActivityHomeBinding binding;
-
 
 
     @Override

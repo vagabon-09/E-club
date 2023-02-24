@@ -11,9 +11,8 @@ import com.championclub_balirmath.com.R;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.bell_1);
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, Settings.System.DEFAULT_ALARM_ALERT_URI);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
-
     }
 }
