@@ -28,9 +28,6 @@
             android:name=".Activity.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.EventsActivity"
-            android:exported="true" />
-        <activity
             android:name=".Activity.MembersActivity"
             android:exported="true" />
         <activity

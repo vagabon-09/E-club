@@ -3,11 +3,14 @@ package com.championclub_balirmath.com.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.championclub_balirmath.com.Adapter.EventCardAdapter;
 import com.championclub_balirmath.com.Model.EventCardModel;
+import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
@@ -37,8 +40,9 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         binding.eventBtnId.setOnClickListener(v -> { // This on click listener is to redirect to event activity
-            Intent intent = new Intent(HomeActivity.this, EventsActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(HomeActivity.this, EventsActivity.class);
+//            startActivity(intent);
+            createEvents();
         });
 
         binding.proflleBtn.setOnClickListener(v -> { // This button for redirecting home page to Member profile page
@@ -62,13 +66,20 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.DonateBtnId.setOnClickListener(v -> { // This button for redirecting homepage to Settings page
+        binding.DonateBtnId.setOnClickListener(v -> { // This button for redirecting homepage to Donate page
             Intent intent = new Intent(HomeActivity.this, DonateActivity.class);
             startActivity(intent);
 //            Toast.makeText(this, "This option is not available now", Toast.LENGTH_SHORT).show();
         });
 
 
+    }
+
+    private void createEvents() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.event_dialog_box);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        dialog.show();
     }
 
     public void cardRecView() {

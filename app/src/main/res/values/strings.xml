@@ -59,4 +59,11 @@
     <string name="event_card">Create Event</string>
     <string name="event_name">Event Name</string>
     <string name="_12_03_23">12/03/23</string>
+    <string name="create_event_name">Event Name</string>
+    <string name="create_event_date">25-02-23</string>
+    <string name="create_event_date_">Event Date:</string>
+    <string name="create_organiser">Organiser</string>
+    <string name="create">Create</string>
+    <string name="name_event">Rajesh Bhadra</string>
+    <string name="page_title_event">Event Card</string>
 </resources>
