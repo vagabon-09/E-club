@@ -1,23 +1,34 @@
 package com.championclub_balirmath.com.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
-import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.championclub_balirmath.com.Model.ParticipatedModel;
+import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.Receiver.AlarmReceiver;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.championclub_balirmath.com.databinding.ActivityKnowMoreBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class KnowMoreActivity extends AppCompatActivity {
     private ActivityKnowMoreBinding binding;
@@ -25,12 +36,21 @@ public class KnowMoreActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private DateTime dateTime;
     private Intent intent;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String keyValue;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityKnowMoreBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        // Setting Firebase
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
+        mAuth = FirebaseAuth.getInstance();
         dateTime = new DateTime();
         // Getting data from shared preferences
         gettingData();
@@ -48,6 +68,7 @@ public class KnowMoreActivity extends AppCompatActivity {
         intent = getIntent();
         String eventName = intent.getStringExtra("event_name"); // Getting date from adapter class
         String eventOrganiser = intent.getStringExtra("event_organiser");// Getting date from adapter class
+        keyValue = intent.getStringExtra("key_value");//Getting keyValue from database
         long eventDate = intent.getLongExtra("event_date", 0);// Getting data from adapter class
         // Now setting data
         binding.eventNameId.setText(eventName);
@@ -75,13 +96,44 @@ public class KnowMoreActivity extends AppCompatActivity {
             Toast.makeText(this, "We will remained you " + dateTime.DayTime(intent.getLongExtra("event_date", 0) - 86400000),
                     Toast.LENGTH_LONG).show();
         });
+
         binding.eventReminderBtnId2.setOnClickListener(v -> { // When click on Reminder Btn 2
             binding.eventReminderBtnId.setVisibility(View.VISIBLE);
             binding.eventReminderBtnId2.setVisibility(View.GONE);
             stopRemainder();
             Toast.makeText(this, "Remainder canceled.", Toast.LENGTH_SHORT).show();
         });
+
+        binding.participateId.setOnClickListener(v -> { // When click on participate button
+            participateNow();
+        });
+
+        binding.cancelEventBtnId.setOnClickListener(v -> { // When click on finished event button
+            reference.child("Events").child(keyValue).removeValue();
+            finish();
+        });
+
     }
+
+    private void participateNow() {
+        ProfileActivity profileActivity = new ProfileActivity();
+        reference.child("Users").child(Objects.requireNonNull(mAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ProfileModel model = snapshot.getValue(ProfileModel.class);
+                assert model != null;
+                ParticipatedModel participatedModel = new ParticipatedModel(model.getUserName());
+                reference.child("Events").child(keyValue).child("participate").push().setValue(participatedModel);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(profileActivity, "Trying again....", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void stopRemainder() {
         SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);

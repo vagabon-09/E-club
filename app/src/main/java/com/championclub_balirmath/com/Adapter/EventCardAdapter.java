@@ -1,23 +1,14 @@
 package com.championclub_balirmath.com.Adapter;
-
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-
 import androidx.annotation.NonNull;
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 import com.championclub_balirmath.com.Activity.KnowMoreActivity;
 import com.championclub_balirmath.com.Model.EventCardModel;
-
-
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -33,6 +24,7 @@ public class EventCardAdapter extends FirebaseRecyclerAdapter<EventCardModel, Ev
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull EventCardModel model) {
+
         DateTime dateTime = new DateTime();
         String date = dateTime.Date(model.getEventDate());
         holder.EventName.setText(model.getEventName());
@@ -43,6 +35,7 @@ public class EventCardAdapter extends FirebaseRecyclerAdapter<EventCardModel, Ev
             i.putExtra("event_name", model.getEventName());
             i.putExtra("event_date", model.getEventDate());
             i.putExtra("event_organiser", model.getEventOrganiserName());
+            i.putExtra("key_value",getRef(position).getKey());
             holder.knowMore.getContext().startActivity(i);
         });
     }
@@ -54,7 +47,7 @@ public class EventCardAdapter extends FirebaseRecyclerAdapter<EventCardModel, Ev
         return new MyViewHolder(view);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView EventName, EventOrganiserName, EventDate;
         CardView knowMore;
 

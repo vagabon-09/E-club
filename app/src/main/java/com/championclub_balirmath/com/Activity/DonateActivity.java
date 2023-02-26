@@ -133,7 +133,7 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
     }
 
     @Override
-    public void onPaymentSuccess(String razorpayPaymentID) {
+    public void onPaymentSuccess(String razorpayPaymentID) { // This function will call automatically when payment will success
 
         //Sending balance history to database
         reference.child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid())).addValueEventListener(new ValueEventListener() {
@@ -162,7 +162,7 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
             public void onSuccess(Void unused) {
 //                Log.d("balance", "onSuccess: "+balance);
 //                Log.d("amount", "onSuccess: "+amount/100);
-                binding.donateWalletBalanceId.setText(""+balance);
+                binding.donateWalletBalanceId.setText("" + balance);
             }
         });
 
