@@ -21,6 +21,7 @@ import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.championclub_balirmath.com.databinding.ActivityHomeBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private DatabaseReference reference;
     private EventCardAdapter adapter;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -39,8 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //All firebase operation
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        mAuth = FirebaseAuth.getInstance();
         cardRecView(); // This function is used for sending data to card recycler view in home page
         buttonCLicked();
 
@@ -118,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
                 TextInputEditText eventName, organiserName;
                 eventName = dialog.findViewById(R.id.getEventNameId);
                 organiserName = dialog.findViewById(R.id.createOrganiserNameIdInput);
-                EventCardModel model = new EventCardModel(Objects.requireNonNull(eventName.getText()).toString(), Objects.requireNonNull(organiserName.getText()).toString(), convert_ms[0],false);
+                EventCardModel model = new EventCardModel(Objects.requireNonNull(eventName.getText()).toString(), Objects.requireNonNull(organiserName.getText()).toString(), mAuth.getUid(), convert_ms[0], false);
                 reference.child("Events").push().setValue(model).addOnSuccessListener(unused -> {
 //                        Toast.makeText(HomeActivity.this, "Insert Done", Toast.LENGTH_SHORT).show()
                         }

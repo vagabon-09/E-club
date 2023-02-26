@@ -3,18 +3,32 @@ package com.championclub_balirmath.com.Model;
 public class EventCardModel {
     private String EventName;
     private String EventOrganiserName;
-    private long EventDate;
-    private boolean alarm;
+
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    private String creatorId;
 
     public EventCardModel() {
     }
 
-    public EventCardModel(String eventName, String eventOrganiserName, long eventDate, boolean alarm) {
+    public EventCardModel(String eventName, String eventOrganiserName, String creatorId, long eventDate, boolean alarm) {
         EventName = eventName;
         EventOrganiserName = eventOrganiserName;
+        this.creatorId = creatorId;
         EventDate = eventDate;
         this.alarm = alarm;
     }
+
+    private long EventDate;
+    private boolean alarm;
+
+
 
     public String getEventName() {
         return EventName;

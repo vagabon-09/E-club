@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.Adapter.ParticipatedAdapter;
+import com.championclub_balirmath.com.Model.EventCardModel;
 import com.championclub_balirmath.com.Model.ParticipatedModel;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
@@ -60,7 +61,30 @@ public class KnowMoreActivity extends AppCompatActivity {
         // Getting data from shared preferences
         isAlarmActive(); // this function is checking is alarm active or not
         isAParticipate(); // this function is checking is this user a participate or not
+        /* this function is checking is current user is event creator or not if current user
+        is not the event creator then hide finished event otherwise show finished event button */
+        isEventCreator();
 
+
+    }
+
+    private void isEventCreator() {
+        reference.child("Events").child(keyValue).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                EventCardModel model = snapshot.getValue(EventCardModel.class);
+                assert model != null;
+                String uid = model.getCreatorId();
+                if (Objects.equals(uid, mAuth.getUid())){
+                    binding.cancelEventBtnId.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void isAParticipate() {
@@ -68,7 +92,6 @@ public class KnowMoreActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long g = snapshot.getChildrenCount();
-                Log.d("getValue", "isAParticipate: " + g + "");
                 if (g == 1) {
                     binding.unParticipateId.setVisibility(View.VISIBLE);
                     binding.participateId.setVisibility(View.GONE);
@@ -107,7 +130,7 @@ public class KnowMoreActivity extends AppCompatActivity {
 //        alarm = intent.getBooleanExtra("alarm", false); // Getting boolean value from adapter
         long eventDate = intent.getLongExtra("event_date", 0);// Getting data from adapter class
 
-        // Now setting data
+        // Now setting data to views
         binding.eventNameId.setText(eventName);
         binding.organiserNameId.setText("Organiser:  " + eventOrganiser);
         binding.dateId.setText(dateTime.Date(eventDate));
