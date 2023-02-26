@@ -27,7 +27,7 @@
             android:fontFamily="@font/exo2"
             android:text="@string/participator_name"
             android:textColor="@color/black"
-            android:textSize="@dimen/_17sdp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

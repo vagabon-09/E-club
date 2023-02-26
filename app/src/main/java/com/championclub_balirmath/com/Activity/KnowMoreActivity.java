@@ -9,7 +9,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +23,6 @@ import com.championclub_balirmath.com.Receiver.AlarmReceiver;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.championclub_balirmath.com.databinding.ActivityKnowMoreBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +40,6 @@ public class KnowMoreActivity extends AppCompatActivity {
     private Intent intent;
     private DatabaseReference reference;
     private String keyValue;
-    private String alarm;
     private FirebaseAuth mAuth;
     private ParticipatedAdapter adapter;
 
@@ -53,18 +50,41 @@ public class KnowMoreActivity extends AppCompatActivity {
         binding = ActivityKnowMoreBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         // Setting Firebase
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
-        mAuth = FirebaseAuth.getInstance();
-        dateTime = new DateTime();
-        //When click button set action
-        setCLick();
-        //Setting values in appropriate place
-        setDate();
-        //Setting RecyclerView
-        recyclerViewSetUp();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();//Firebase database declaring
+        reference = database.getReference();// firebase database reference declaring
+        mAuth = FirebaseAuth.getInstance();// Firebase auth declaring
+        dateTime = new DateTime(); // dateTime class object creating
+        setCLick();//When click button set action
+        setDate();//Setting values in appropriate place
+        recyclerViewSetUp();//Setting RecyclerView
         // Getting data from shared preferences
-        isAlarmActive();
+        isAlarmActive(); // this function is checking is alarm active or not
+        isAParticipate(); // this function is checking is this user a participate or not
+
+    }
+
+    private void isAParticipate() {
+        reference.child("Events").child(keyValue).child("participate").child(Objects.requireNonNull(mAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long g = snapshot.getChildrenCount();
+                Log.d("getValue", "isAParticipate: " + g + "");
+                if (g == 1) {
+                    binding.unParticipateId.setVisibility(View.VISIBLE);
+                    binding.participateId.setVisibility(View.GONE);
+                } else {
+                    binding.unParticipateId.setVisibility(View.GONE);
+                    binding.participateId.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -87,7 +107,6 @@ public class KnowMoreActivity extends AppCompatActivity {
 //        alarm = intent.getBooleanExtra("alarm", false); // Getting boolean value from adapter
         long eventDate = intent.getLongExtra("event_date", 0);// Getting data from adapter class
 
-
         // Now setting data
         binding.eventNameId.setText(eventName);
         binding.organiserNameId.setText("Organiser:  " + eventOrganiser);
@@ -95,7 +114,6 @@ public class KnowMoreActivity extends AppCompatActivity {
     }
 
     private void isAlarmActive() { // Getting shared preferences data  if data is available here then perform this function
-        Log.d("isAlarmActive", "isAlarmActive: " + alarm);
         reference.child("Events").child(keyValue).child("alarm").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -140,6 +158,14 @@ public class KnowMoreActivity extends AppCompatActivity {
 
         binding.participateId.setOnClickListener(v -> { // When click on participate button
             participateNow();
+            binding.unParticipateId.setVisibility(View.VISIBLE);
+            binding.participateId.setVisibility(View.GONE);
+        });
+
+        binding.unParticipateId.setOnClickListener(v -> { // When click on un-participate button
+            binding.unParticipateId.setVisibility(View.GONE);
+            binding.participateId.setVisibility(View.VISIBLE);
+            unParticipate();
         });
 
         binding.cancelEventBtnId.setOnClickListener(v -> { // When click on finished event button
@@ -147,6 +173,10 @@ public class KnowMoreActivity extends AppCompatActivity {
             finish();
         });
 
+    }
+
+    private void unParticipate() {
+        reference.child("Events").child(keyValue).child("participate").child(Objects.requireNonNull(mAuth.getUid())).removeValue();
     }
 
     private void participateNow() { // Participate users name sending to data base
@@ -157,7 +187,7 @@ public class KnowMoreActivity extends AppCompatActivity {
                 ProfileModel model = snapshot.getValue(ProfileModel.class);
                 assert model != null;
                 ParticipatedModel participatedModel = new ParticipatedModel(model.getUserName());
-                reference.child("Events").child(keyValue).child("participate").push().setValue(participatedModel);
+                reference.child("Events").child(keyValue).child("participate").child(mAuth.getUid()).setValue(participatedModel);
 
             }
 
