@@ -3,16 +3,17 @@ package com.championclub_balirmath.com.Model;
 public class EventCardModel {
     private String EventName;
     private String EventOrganiserName;
-    private String EventDate;
+    private long EventDate;
 
-    public EventCardModel() {
-    }
-
-    public EventCardModel(String eventName, String eventOrganiserName, String eventDate) {
+    public EventCardModel(String eventName, String eventOrganiserName, long eventDate) {
         EventName = eventName;
         EventOrganiserName = eventOrganiserName;
         EventDate = eventDate;
     }
+
+    public EventCardModel() {
+    }
+
 
     public String getEventName() {
         return EventName;
@@ -30,11 +31,11 @@ public class EventCardModel {
         EventOrganiserName = eventOrganiserName;
     }
 
-    public String getEventDate() {
+    public long getEventDate() {
         return EventDate;
     }
 
-    public void setEventDate(String eventDate) {
+    public void setEventDate(long eventDate) {
         EventDate = eventDate;
     }
 }

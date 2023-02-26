@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         app:boxCornerRadiusBottomEnd="@dimen/_15sdp"
         app:boxCornerRadiusBottomStart="@dimen/_15sdp"
@@ -34,13 +35,12 @@
         app:boxCornerRadiusTopStart="@dimen/_15sdp"
         app:boxStrokeColor="@color/green_deep_color"
         app:hintTextColor="@color/green_deep_color"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19"
-        app:layout_constraintVertical_bias="0.01999998">
+        app:layout_constraintTop_toBottomOf="@+id/textView19">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/getEventNameId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/create_event_name"
@@ -57,13 +57,13 @@
         android:text="@string/create_event_date_"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toStartOf="@+id/appCompatButton2"
+        app:layout_constraintEnd_toStartOf="@+id/calenderBtnId"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton2"
+        android:id="@+id/calenderBtnId"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_20sdp"
         android:background="@drawable/date_button_shape"
@@ -75,42 +75,48 @@
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toTopOf="@+id/textView20" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="@string/create_organiser"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintStart_toStartOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createOrganiserNameId"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        android:text="@string/name_event"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatButton2"
-        app:layout_constraintHorizontal_bias="0.73"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:boxCornerRadiusBottomEnd="@dimen/_15sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_15sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_15sdp"
+        app:boxCornerRadiusTopStart="@dimen/_15sdp"
+        app:boxStrokeColor="@color/green_deep_color"
+        app:hintTextColor="@color/green_deep_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:placeholderText="Enter Organiser Name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganiserNameIdInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_organiser" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createBtnId"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/rzp_green_button"
         android:text="@string/create"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        app:boxStrokeColor="@color/green_deep_color"
+        app:hintTextColor="@color/green_deep_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintEnd_toEndOf="@+id/createOrganiserNameId"
+        app:layout_constraintStart_toStartOf="@+id/createOrganiserNameId"
+        app:layout_constraintTop_toBottomOf="@+id/createOrganiserNameId" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

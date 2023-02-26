@@ -66,4 +66,6 @@
     <string name="create">Create</string>
     <string name="name_event">Rajesh Bhadra</string>
     <string name="page_title_event">Event Card</string>
+    <string name="name">Name</string>
+    <string name="cancel">Finished Event</string>
 </resources>

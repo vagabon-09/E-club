@@ -6,49 +6,52 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
+
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.championclub_balirmath.com.Activity.ChattingActivity;
+
 import com.championclub_balirmath.com.Activity.KnowMoreActivity;
 import com.championclub_balirmath.com.Model.EventCardModel;
+
+
 import com.championclub_balirmath.com.R;
-
-import java.util.ArrayList;
-
-public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.MyViewHolder> {
-    ArrayList<EventCardModel> eventCardModels;
-
-    public EventCardAdapter(ArrayList<EventCardModel> eventCardModels) {
-        this.eventCardModels = eventCardModels;
-    }
+import com.championclub_balirmath.com.ReusableCode.DateTime;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
-    @NonNull
-    @Override
-    public EventCardAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_event_card, parent, false);
-        return new MyViewHolder(view);
+public class EventCardAdapter extends FirebaseRecyclerAdapter<EventCardModel, EventCardAdapter.MyViewHolder> {
+
+
+    public EventCardAdapter(@NonNull FirebaseRecyclerOptions<EventCardModel> options) {
+        super(options);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventCardAdapter.MyViewHolder holder, int position) {
-        holder.EventName.setText(eventCardModels.get(position).getEventName());
-        holder.EventOrganiserName.setText(eventCardModels.get(position).getEventOrganiserName());
-        holder.EventDate.setText(eventCardModels.get(position).getEventDate());
+    protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull EventCardModel model) {
+        DateTime dateTime = new DateTime();
+        String date = dateTime.Date(model.getEventDate());
+        holder.EventName.setText(model.getEventName());
+        holder.EventDate.setText(date);
+        holder.EventOrganiserName.setText(model.getEventOrganiserName());
         holder.knowMore.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.EventDate.getContext(), KnowMoreActivity.class);
-            holder.EventDate.getContext().startActivity(intent);
-
+            Intent i = new Intent(holder.EventDate.getContext(), KnowMoreActivity.class);
+            i.putExtra("event_name", model.getEventName());
+            i.putExtra("event_date", model.getEventDate());
+            i.putExtra("event_organiser", model.getEventOrganiserName());
+            holder.knowMore.getContext().startActivity(i);
         });
     }
 
+    @NonNull
     @Override
-    public int getItemCount() {
-        return eventCardModels.size();
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_event_card, parent, false);
+        return new MyViewHolder(view);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

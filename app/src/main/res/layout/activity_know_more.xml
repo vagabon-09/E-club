@@ -32,6 +32,9 @@
                 app:layout_constraintVertical_bias="0.26"
                 app:tint="@color/white" />
 
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </Toolbar>
 
@@ -105,6 +108,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/organiserNameId"
                 app:layout_constraintTop_toBottomOf="@+id/organiserNameId" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:id="@+id/cancelEventBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_22sdp"
+                android:background="@drawable/cancle_event_btn"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/participateId"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/participateId"
+                app:layout_constraintTop_toTopOf="@+id/participateId" />
 
             <ImageView
                 android:id="@+id/eventReminderBtnId"
