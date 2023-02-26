@@ -2,6 +2,7 @@ package com.championclub_balirmath.com.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -15,12 +16,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.championclub_balirmath.com.Adapter.ParticipatedAdapter;
+import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.ParticipatedModel;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.Receiver.AlarmReceiver;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.championclub_balirmath.com.databinding.ActivityKnowMoreBinding;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +44,7 @@ public class KnowMoreActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String keyValue;
     private FirebaseAuth mAuth;
+    private ParticipatedAdapter adapter;
 
 
     @Override
@@ -60,11 +65,23 @@ public class KnowMoreActivity extends AppCompatActivity {
         setCLick();
         //Setting values in appropriate place
         setDate();
+        //Setting RecyclerView
+        recyclerViewSetUp();
 
     }
 
+    private void recyclerViewSetUp() { // setting data from data base and showing in recyclerview
+        FirebaseRecyclerOptions<ParticipatedModel> options
+                = new FirebaseRecyclerOptions.Builder<ParticipatedModel>()
+                .setQuery(reference.child("Events").child(keyValue).child("participate"), ParticipatedModel.class)
+                .build();
+        adapter = new ParticipatedAdapter(options);
+        binding.participateRecView.setLayoutManager(new LinearLayoutManager(this));
+        binding.participateRecView.setAdapter(adapter);
+    }
+
     @SuppressLint("SetTextI18n")
-    private void setDate() {
+    private void setDate() { // Getting data from adapter class
         intent = getIntent();
         String eventName = intent.getStringExtra("event_name"); // Getting date from adapter class
         String eventOrganiser = intent.getStringExtra("event_organiser");// Getting date from adapter class
@@ -76,9 +93,9 @@ public class KnowMoreActivity extends AppCompatActivity {
         binding.dateId.setText(dateTime.Date(eventDate));
     }
 
-    private void gettingData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);
-        boolean check = sharedPreferences.getBoolean("remainder", false);
+    private void gettingData() { // Getting shared preferences data  if data is available here then perform this function
+        SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE); // Getting data using sharedPreferences
+        boolean check = sharedPreferences.getBoolean("remainder", false);// Getting data using sharedPreferences
         if (check) {
             binding.eventReminderBtnId2.setVisibility(View.VISIBLE);
             binding.eventReminderBtnId.setVisibility(View.GONE);
@@ -88,7 +105,7 @@ public class KnowMoreActivity extends AppCompatActivity {
         }
     }
 
-    private void setCLick() {
+    private void setCLick() { // All button is setting here
         binding.eventReminderBtnId.setOnClickListener(v -> { // When click on event Reminder Btn
             binding.eventReminderBtnId2.setVisibility(View.VISIBLE);
             binding.eventReminderBtnId.setVisibility(View.GONE);
@@ -115,7 +132,7 @@ public class KnowMoreActivity extends AppCompatActivity {
 
     }
 
-    private void participateNow() {
+    private void participateNow() { // Participate users name sending to data base
         ProfileActivity profileActivity = new ProfileActivity();
         reference.child("Users").child(Objects.requireNonNull(mAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -135,7 +152,7 @@ public class KnowMoreActivity extends AppCompatActivity {
     }
 
 
-    private void stopRemainder() {
+    private void stopRemainder() { // This function is used to stop alarm remainder
         SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("remainder", false);
@@ -149,7 +166,7 @@ public class KnowMoreActivity extends AppCompatActivity {
 
     }
 
-    private void startRemainder() {
+    private void startRemainder() { // This function is used to start remainder
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.bell_1); // Setting alarm , you can change the alarm tone from here
         mediaPlayer.start();
         SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);
@@ -163,5 +180,17 @@ public class KnowMoreActivity extends AppCompatActivity {
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(KnowMoreActivity.this, ALARM_REQUEST_CODE, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarm_time, pendingIntent);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
