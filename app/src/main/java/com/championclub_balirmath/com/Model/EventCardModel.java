@@ -4,11 +4,24 @@ public class EventCardModel {
     private String EventName;
     private String EventOrganiserName;
     private long EventDate;
+    private String name;
 
     public EventCardModel(String eventName, String eventOrganiserName, long eventDate) {
         EventName = eventName;
         EventOrganiserName = eventOrganiserName;
         EventDate = eventDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public EventCardModel(String name) {
+        this.name = name;
     }
 
     public EventCardModel() {
