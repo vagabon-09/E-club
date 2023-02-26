@@ -118,8 +118,11 @@ public class HomeActivity extends AppCompatActivity {
                 TextInputEditText eventName, organiserName;
                 eventName = dialog.findViewById(R.id.getEventNameId);
                 organiserName = dialog.findViewById(R.id.createOrganiserNameIdInput);
-                EventCardModel model = new EventCardModel(Objects.requireNonNull(eventName.getText()).toString(), Objects.requireNonNull(organiserName.getText()).toString(), convert_ms[0]);
-                reference.child("Events").push().setValue(model).addOnSuccessListener(unused -> Toast.makeText(HomeActivity.this, "Insert Done", Toast.LENGTH_SHORT).show());
+                EventCardModel model = new EventCardModel(Objects.requireNonNull(eventName.getText()).toString(), Objects.requireNonNull(organiserName.getText()).toString(), convert_ms[0],false);
+                reference.child("Events").push().setValue(model).addOnSuccessListener(unused -> {
+//                        Toast.makeText(HomeActivity.this, "Insert Done", Toast.LENGTH_SHORT).show()
+                        }
+                );
                 dialog.dismiss();
             });
 

@@ -1,12 +1,16 @@
 package com.championclub_balirmath.com.Adapter;
+
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.championclub_balirmath.com.Activity.KnowMoreActivity;
 import com.championclub_balirmath.com.Model.EventCardModel;
 import com.championclub_balirmath.com.R;
@@ -30,12 +34,13 @@ public class EventCardAdapter extends FirebaseRecyclerAdapter<EventCardModel, Ev
         holder.EventName.setText(model.getEventName());
         holder.EventDate.setText(date);
         holder.EventOrganiserName.setText(model.getEventOrganiserName());
-        holder.knowMore.setOnClickListener(v -> {
+        holder.knowMore.setOnClickListener(v -> { // Sending data to targeted page
             Intent i = new Intent(holder.EventDate.getContext(), KnowMoreActivity.class);
             i.putExtra("event_name", model.getEventName());
             i.putExtra("event_date", model.getEventDate());
             i.putExtra("event_organiser", model.getEventOrganiserName());
-            i.putExtra("key_value",getRef(position).getKey());
+            i.putExtra("key_value", getRef(position).getKey());
+            i.putExtra("alarm", model.isAlarm());
             holder.knowMore.getContext().startActivity(i);
         });
     }

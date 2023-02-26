@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.Adapter.ParticipatedAdapter;
-import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.ParticipatedModel;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
@@ -25,6 +24,7 @@ import com.championclub_balirmath.com.Receiver.AlarmReceiver;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
 import com.championclub_balirmath.com.databinding.ActivityKnowMoreBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,9 +40,9 @@ public class KnowMoreActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private DateTime dateTime;
     private Intent intent;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
     private String keyValue;
+    private String alarm;
     private FirebaseAuth mAuth;
     private ParticipatedAdapter adapter;
 
@@ -53,20 +53,18 @@ public class KnowMoreActivity extends AppCompatActivity {
         binding = ActivityKnowMoreBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         // Setting Firebase
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         mAuth = FirebaseAuth.getInstance();
         dateTime = new DateTime();
-        // Getting data from shared preferences
-        gettingData();
-        //when click back button
-        binding.eventBackId.setOnClickListener(view -> finish());
         //When click button set action
         setCLick();
         //Setting values in appropriate place
         setDate();
         //Setting RecyclerView
         recyclerViewSetUp();
+        // Getting data from shared preferences
+        isAlarmActive();
 
     }
 
@@ -86,26 +84,45 @@ public class KnowMoreActivity extends AppCompatActivity {
         String eventName = intent.getStringExtra("event_name"); // Getting date from adapter class
         String eventOrganiser = intent.getStringExtra("event_organiser");// Getting date from adapter class
         keyValue = intent.getStringExtra("key_value");//Getting keyValue from database
+//        alarm = intent.getBooleanExtra("alarm", false); // Getting boolean value from adapter
         long eventDate = intent.getLongExtra("event_date", 0);// Getting data from adapter class
+
+
         // Now setting data
         binding.eventNameId.setText(eventName);
         binding.organiserNameId.setText("Organiser:  " + eventOrganiser);
         binding.dateId.setText(dateTime.Date(eventDate));
     }
 
-    private void gettingData() { // Getting shared preferences data  if data is available here then perform this function
-        SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE); // Getting data using sharedPreferences
-        boolean check = sharedPreferences.getBoolean("remainder", false);// Getting data using sharedPreferences
-        if (check) {
-            binding.eventReminderBtnId2.setVisibility(View.VISIBLE);
-            binding.eventReminderBtnId.setVisibility(View.GONE);
-        } else {
-            binding.eventReminderBtnId2.setVisibility(View.GONE);
-            binding.eventReminderBtnId.setVisibility(View.VISIBLE);
-        }
+    private void isAlarmActive() { // Getting shared preferences data  if data is available here then perform this function
+        Log.d("isAlarmActive", "isAlarmActive: " + alarm);
+        reference.child("Events").child(keyValue).child("alarm").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                boolean check = Boolean.TRUE.equals(snapshot.getValue(Boolean.class));
+                Log.d("DataSnapshot", "onDataChange: " + check);
+                if (check) {
+                    binding.eventReminderBtnId2.setVisibility(View.VISIBLE);
+                    binding.eventReminderBtnId.setVisibility(View.GONE);
+                } else {
+                    binding.eventReminderBtnId2.setVisibility(View.GONE);
+                    binding.eventReminderBtnId.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void setCLick() { // All button is setting here
+        //when click back button
+        binding.eventBackId.setOnClickListener(view -> finish());
+
         binding.eventReminderBtnId.setOnClickListener(v -> { // When click on event Reminder Btn
             binding.eventReminderBtnId2.setVisibility(View.VISIBLE);
             binding.eventReminderBtnId.setVisibility(View.GONE);
@@ -153,10 +170,7 @@ public class KnowMoreActivity extends AppCompatActivity {
 
 
     private void stopRemainder() { // This function is used to stop alarm remainder
-        SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("remainder", false);
-        editor.apply();
+        cancelAlarm();
         Intent i2 = new Intent(KnowMoreActivity.this, AlarmReceiver.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(KnowMoreActivity.this, ALARM_REQUEST_CODE, i2, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager == null) {
@@ -166,13 +180,15 @@ public class KnowMoreActivity extends AppCompatActivity {
 
     }
 
+    private void cancelAlarm() {
+        reference.child("Events").child(keyValue).child("alarm").setValue(false);
+    }
+
     private void startRemainder() { // This function is used to start remainder
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.bell_1); // Setting alarm , you can change the alarm tone from here
         mediaPlayer.start();
-        SharedPreferences sharedPreferences = getSharedPreferences("alarm", MODE_PRIVATE);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("remainder", true);
-        editor.apply();
+        //Setting Alarm remainder
+        setAlarm();
         //Setting Alarm
         long alarm_time = intent.getLongExtra("event_date", 0) - 86400000; // Getting one day before time 10:00 AM
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -182,14 +198,18 @@ public class KnowMoreActivity extends AppCompatActivity {
 
     }
 
+    private void setAlarm() { // Setting alarm true
+        reference.child("Events").child(keyValue).child("alarm").setValue(true);
+    }
+
     @Override
-    protected void onStart() {
+    protected void onStart() { // It's required for recyclerview
         super.onStart();
         adapter.startListening();
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop() { // It's required for recyclerview
         super.onStop();
         adapter.stopListening();
     }

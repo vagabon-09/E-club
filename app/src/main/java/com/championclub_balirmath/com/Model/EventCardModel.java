@@ -4,18 +4,17 @@ public class EventCardModel {
     private String EventName;
     private String EventOrganiserName;
     private long EventDate;
-
-
-    public EventCardModel(String eventName, String eventOrganiserName, long eventDate) {
-        EventName = eventName;
-        EventOrganiserName = eventOrganiserName;
-        EventDate = eventDate;
-    }
-
+    private boolean alarm;
 
     public EventCardModel() {
     }
 
+    public EventCardModel(String eventName, String eventOrganiserName, long eventDate, boolean alarm) {
+        EventName = eventName;
+        EventOrganiserName = eventOrganiserName;
+        EventDate = eventDate;
+        this.alarm = alarm;
+    }
 
     public String getEventName() {
         return EventName;
@@ -40,4 +39,13 @@ public class EventCardModel {
     public void setEventDate(long eventDate) {
         EventDate = eventDate;
     }
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
+    }
+
 }
