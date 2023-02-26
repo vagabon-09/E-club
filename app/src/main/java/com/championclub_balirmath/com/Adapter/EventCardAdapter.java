@@ -1,7 +1,6 @@
 package com.championclub_balirmath.com.Adapter;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
