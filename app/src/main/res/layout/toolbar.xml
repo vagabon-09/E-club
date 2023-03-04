@@ -7,7 +7,7 @@
     android:layout_height="?attr/actionBarSize">
 
     <ImageView
-        android:id="@+id/arrow_back_id"
+        android:id="@+id/note_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_30sdp"

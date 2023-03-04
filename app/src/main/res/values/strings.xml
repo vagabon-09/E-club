@@ -69,4 +69,14 @@
     <string name="name">Name</string>
     <string name="cancel">Finished Event</string>
     <string name="un_participate">un-participate</string>
+    <string name="note_back_btn">Club Note</string>
+    <string name="clubNote">Club Notes</string>
+    <string name="add_btn">add_btn</string>
+    <string name="note_title">Kalipujo</string>
+    <string name="note_author">created by Rajesh Bhadra</string>
+    <string name="delete_icon_dsc">delete icon</string>
+    <string name="note_title_hard">Title</string>
+    <string name="enter_title">Enter Title</string>
+    <string name="noteContent">Note</string>
+    <string name="cancel_btn">Canel</string>
 </resources>
