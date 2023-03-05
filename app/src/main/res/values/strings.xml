@@ -82,4 +82,5 @@
     <string name="demo_content">This is demo text for android users</string>
     <string name="notice_date">Date: 20-03-23</string>
     <string name="notice_by">~ by Rajesh Bhadra</string>
+    <string name="earn">Earn Money</string>
 </resources>
