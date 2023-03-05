@@ -4,79 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Activity.ProfileActivity">
 
-    <ImageView
-        android:id="@+id/ProfileImageId"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cover_photo" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@drawable/profile_cover_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/profile_backId"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_3sdp"
+        android:background="@color/green_deep_color"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/profileImageId"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
         android:src="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/deep_green_circle"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/profileImageId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toEndOf="@+id/profileImageId"
+        app:layout_constraintTop_toTopOf="@+id/profileImageId"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:visibility="visible"
+        android:id="@+id/addUserPhotoId"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/add_photo_white_512"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4"
+        app:layout_constraintVertical_bias="0.32999998" />
 
     <TextView
         android:id="@+id/ProfileUserNameId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_5sdp"
         android:fontFamily="@font/exo2"
         android:text=""
         android:textColor="@color/black"
-        android:textSize="@dimen/_16sdp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileImageId"
-        app:layout_constraintStart_toStartOf="@+id/ProfileImageId"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileImageId" />
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="@+id/profileImageId"
+        app:layout_constraintStart_toStartOf="@+id/profileImageId"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageId" />
 
     <TextView
+        android:fontFamily="@font/exo2"
         android:id="@+id/ProfileEmailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/exo2"
         android:text=""
         app:layout_constraintEnd_toEndOf="@+id/ProfileUserNameId"
         app:layout_constraintStart_toStartOf="@+id/ProfileUserNameId"
         app:layout_constraintTop_toBottomOf="@+id/ProfileUserNameId" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileEmailId"
-        app:layout_constraintStart_toStartOf="@+id/ProfileEmailId"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileEmailId">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/logoutCardId"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/logoutId"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:src="@drawable/log_out"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Logout"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/logoutId"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

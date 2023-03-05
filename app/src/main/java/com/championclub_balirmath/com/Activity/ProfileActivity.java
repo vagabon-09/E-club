@@ -34,16 +34,26 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
-        binding.logoutCardId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//
+        onClick();
         fetchData();
+    }
+
+    private void onClick() {
+//        binding.logoutCardId.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mAuth.signOut();
+//                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+        //When click on back button
+        binding.profileBackId.setOnClickListener(v -> {
+            finish();
+        });
     }
 
 
