@@ -1,14 +1,16 @@
 package com.championclub_balirmath.com.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.championclub_balirmath.com.Activity.MembersActivity;
+import com.championclub_balirmath.com.Activity.ProfileActivity;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -31,12 +33,17 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
     protected void onBindViewHolder(@NonNull MembersAdapter.MyViewHolder holder, int position, @NonNull ProfileModel model) {
         holder.memberEmail.setText(model.getUserEmail());
         holder.memberName.setText(model.getUserName());
+        holder.memberBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.memberBtn.getContext(), ProfileActivity.class);
+            intent.putExtra("uId",getRef(position).getKey());
+            holder.memberBtn.getContext().startActivity(intent);
+        });
     }
 
     @NonNull
     @Override
     public MembersAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_member_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_member_layout, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -44,12 +51,14 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
         RoundedImageView memberImage;
         TextView memberName;
         TextView memberEmail;
+        CardView memberBtn;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 //            memberImage = itemView.findViewById(R.id.memberProfileImageView);
             memberName = itemView.findViewById(R.id.memberNameId);
             memberEmail = itemView.findViewById(R.id.memberEmailId);
+            memberBtn = itemView.findViewById(R.id.memberCardBtnId);
         }
     }
 }

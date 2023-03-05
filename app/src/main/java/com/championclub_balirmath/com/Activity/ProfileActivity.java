@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -47,7 +48,15 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void fetchData() {
-        reference.child("Users").child(Objects.requireNonNull(mAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
+        Intent intent = getIntent();
+        /*If we came form member activity class we will set user id if we came directly using home page we will get userId*/
+        String userId = intent.getStringExtra("uId");
+        if (userId == null) {
+            userId = mAuth.getUid();
+        }
+//        Log.d("UserId", "fetchData: " + userId);
+
+        reference.child("Users").child(Objects.requireNonNull(userId)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ProfileModel model = snapshot.getValue(ProfileModel.class);

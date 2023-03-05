@@ -29,6 +29,14 @@ public class MembersActivity extends AppCompatActivity {
         dataBase();
         /*In this function setRecyclerView() we are going to set all the operation of recyclerview*/
         setRecyclerView();
+        /*all action when someone click any button in member activity onClick()*/
+        onClick();
+    }
+
+    private void onClick() {
+        binding.memberPageBack.setOnClickListener(v -> {
+            finish();
+        });
     }
 
     private void dataBase() {
