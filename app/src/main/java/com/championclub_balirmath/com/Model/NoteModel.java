@@ -2,15 +2,7 @@ package com.championclub_balirmath.com.Model;
 
 public class NoteModel {
     String userId, noteTitle, noteContent;
-
-    public NoteModel(String userId, String noteTitle, String noteContent) {
-        this.userId = userId;
-        this.noteTitle = noteTitle;
-        this.noteContent = noteContent;
-    }
-
-    public NoteModel() {
-    }
+    long time;
 
     public String getUserId() {
         return userId;
@@ -36,6 +28,22 @@ public class NoteModel {
         this.noteContent = noteContent;
     }
 
-    public class myViewHolder {
+    public long getTime() {
+        return time;
     }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public NoteModel(String userId, String noteTitle, String noteContent, long time) {
+        this.userId = userId;
+        this.noteTitle = noteTitle;
+        this.noteContent = noteContent;
+        this.time = time;
+    }
+
+    public NoteModel() {
+    }
+
 }

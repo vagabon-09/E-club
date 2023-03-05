@@ -36,9 +36,16 @@ public class DateTime {
         return simpleDateFormat.format(date);
     }
 
+
     public String day(long ms) {
         Date date = new Date(ms);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd");
+        return simpleDateFormat.format(date);
+    }
+
+    public String customDT(long ms,String format) {
+        Date date = new Date(ms);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         return simpleDateFormat.format(date);
     }
 }

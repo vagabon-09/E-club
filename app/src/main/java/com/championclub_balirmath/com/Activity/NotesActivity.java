@@ -69,7 +69,9 @@ public class NotesActivity extends AppCompatActivity {
         // When clicked on back button in notes page
         binding.noteBackBtn.setOnClickListener(v -> finish());
         // When clicked on add note button
-        binding.addNoteBtn.setOnClickListener(v -> createNoteDialog());
+        binding.addNoteBtn.setOnClickListener(v -> {
+            createNoteDialog();
+        });
     }
 
     /*Creating note dialog*/
@@ -108,7 +110,7 @@ public class NotesActivity extends AppCompatActivity {
             } else {
                 dialog.findViewById(R.id.progressBarDoneBtn).setVisibility(View.VISIBLE);
                 dialog.findViewById(R.id.doneBtnId).setVisibility(View.INVISIBLE);
-                NoteModel noteModel = new NoteModel(mAuth.getUid(), title, content);
+                NoteModel noteModel = new NoteModel(mAuth.getUid(), title, content,System.currentTimeMillis());
                 reference.child("Notes").push().setValue(noteModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -116,6 +118,7 @@ public class NotesActivity extends AppCompatActivity {
                         noteTitle.setText("");
                         dialog.findViewById(R.id.progressBarDoneBtn).setVisibility(View.GONE);
                         dialog.findViewById(R.id.doneBtnId).setVisibility(View.VISIBLE);
+                        dialog.dismiss();
                     }
                 });
 

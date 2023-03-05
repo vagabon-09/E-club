@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/NoteSeeBtnId"
     android:elevation="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_10sdp"
     app:cardPreventCornerOverlap="false"
@@ -16,18 +17,17 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:minHeight="@dimen/_46sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <View
+            android:layout_marginTop="@dimen/_5sdp"
             android:id="@+id/view5"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/login_btn_background"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
             android:layout_marginStart="@dimen/_7sdp"
             android:text="@string/note_title"
             android:textColor="@color/black"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/view5"
             app:layout_constraintEnd_toStartOf="@+id/SingleNotedeleteBtnId"
@@ -57,29 +57,30 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/single_note_creator"
+            android:id="@+id/notice_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:text="@string/note_author"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/notice_date"
+            app:layout_constraintBottom_toBottomOf="@+id/view5"
             app:layout_constraintStart_toStartOf="@+id/single_note_titleId"
             app:layout_constraintTop_toBottomOf="@+id/single_note_titleId" />
 
         <View
             android:id="@+id/SingleNotedeleteBtnId"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:background="@drawable/red_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/notice_date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/single_note_titleId" />
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/deleteIconBtnId"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
             android:contentDescription="@string/delete_icon_dsc"
             android:src="@drawable/delete_white_512"
             app:layout_constraintBottom_toBottomOf="@+id/SingleNotedeleteBtnId"
@@ -87,6 +88,38 @@
             app:layout_constraintStart_toEndOf="@+id/single_note_titleId"
             app:layout_constraintTop_toTopOf="@+id/SingleNotedeleteBtnId" />
 
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/expandableContentId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:fontFamily="@font/exo2"
+            android:text="@string/demo_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notice_date" />
+
+        <TextView
+            android:id="@+id/single_note_creator"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notice_by"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expandableContentId" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 </androidx.cardview.widget.CardView>
 

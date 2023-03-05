@@ -22,6 +22,7 @@
     <color name="type_back_color">#DBDBDB</color>
     <color name="green_deep_color">#07A978</color>
     <color name="sender_message_box_color">#AAFF9C</color>
+    <color name="stickyNote">#F6D86D</color>
 
 
 </resources>
