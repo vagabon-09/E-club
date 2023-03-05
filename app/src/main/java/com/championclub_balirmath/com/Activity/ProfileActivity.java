@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,28 +30,47 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
-//
+        /*All database related work is done in database() function*/
+        database();
+        /*All button action is done in onclick function*/
         onClick();
+        /*Fetching all data from database*/
         fetchData();
     }
 
+    private void check(String userId) {
+        if (!Objects.equals(mAuth.getUid(), userId)) {
+            binding.changePhotoBackId.setVisibility(View.GONE);
+            binding.addUserPhotoId.setVisibility(View.GONE);
+        }
+    }
+
+    private void database() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
+    }
+
     private void onClick() {
-//        binding.logoutCardId.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mAuth.signOut();
-//                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        // When click on logout btn
+        binding.profileLogOutBtnId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //When click on back button
         binding.profileBackId.setOnClickListener(v -> {
             finish();
+        });
+        
+        //When click on wallet button
+        binding.profileWalletBtnId.setOnClickListener(v -> {
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -64,6 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
         if (userId == null) {
             userId = mAuth.getUid();
         }
+        /*Checking user coming from which page*/
+        check(userId);
 //        Log.d("UserId", "fetchData: " + userId);
 
         reference.child("Users").child(Objects.requireNonNull(userId)).addListenerForSingleValueEvent(new ValueEventListener() {

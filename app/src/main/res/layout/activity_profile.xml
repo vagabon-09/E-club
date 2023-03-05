@@ -45,6 +45,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
+        android:id="@+id/view6"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
         android:background="@color/green_deep_color"
@@ -64,7 +65,7 @@
         app:layout_constraintVertical_bias="0.19" />
 
     <View
-        android:id="@+id/view4"
+        android:id="@+id/changePhotoBackId"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
         android:background="@drawable/deep_green_circle"
@@ -77,39 +78,208 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <ImageView
-        android:visibility="visible"
         android:id="@+id/addUserPhotoId"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:src="@drawable/add_photo_white_512"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toTopOf="@+id/view4"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/changePhotoBackId"
+        app:layout_constraintEnd_toEndOf="@+id/changePhotoBackId"
+        app:layout_constraintStart_toStartOf="@+id/changePhotoBackId"
+        app:layout_constraintTop_toTopOf="@+id/changePhotoBackId"
         app:layout_constraintVertical_bias="0.32999998" />
 
     <TextView
         android:id="@+id/ProfileUserNameId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:layout_marginTop="@dimen/_5sdp"
         android:fontFamily="@font/exo2"
         android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/profileImageId"
         app:layout_constraintStart_toStartOf="@+id/profileImageId"
         app:layout_constraintTop_toBottomOf="@+id/profileImageId" />
 
     <TextView
-        android:fontFamily="@font/exo2"
         android:id="@+id/ProfileEmailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/exo2"
         android:text=""
         app:layout_constraintEnd_toEndOf="@+id/ProfileUserNameId"
         app:layout_constraintStart_toStartOf="@+id/ProfileUserNameId"
         app:layout_constraintTop_toBottomOf="@+id/ProfileUserNameId" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:alpha="0.5"
+        android:id="@+id/profileWalletBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileEmailId">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/wallet_balck_512"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileWalletId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/wallet_balance"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profilePhoneNumberBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileWalletBtnId">
+
+        <ImageView
+            android:id="@+id/phoneId"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/call_black_512"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profilePhoneNumberId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/NoPhoneNumber"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneId"
+            app:layout_constraintStart_toEndOf="@+id/phoneId"
+            app:layout_constraintTop_toTopOf="@+id/phoneId" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileSettingsBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoneNumberBtnId">
+
+        <ImageView
+            android:id="@+id/profileSettingsIconId"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/settings_black_512"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileSettingsId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/profileSettingsIconId"
+            app:layout_constraintStart_toEndOf="@+id/profileSettingsIconId"
+            app:layout_constraintTop_toTopOf="@+id/profileSettingsIconId" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profilePrivacyBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/profileSettingsBtnId"
+        app:layout_constraintStart_toStartOf="@+id/profileSettingsBtnId"
+        app:layout_constraintTop_toBottomOf="@+id/profileSettingsBtnId">
+
+        <ImageView
+            android:id="@+id/profilePrivacyIconId"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/privacy_black_512"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/privacySecurityId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/privacy"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/profilePrivacyIconId"
+            app:layout_constraintStart_toEndOf="@+id/profilePrivacyIconId"
+            app:layout_constraintTop_toTopOf="@+id/profilePrivacyIconId" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileLogOutBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/profilePrivacyBtnId"
+        app:layout_constraintStart_toStartOf="@+id/profilePrivacyBtnId"
+        app:layout_constraintTop_toBottomOf="@+id/profilePrivacyBtnId">
+
+        <ImageView
+            android:id="@+id/profileLogOutId"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/log_out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileLogoutId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/lout"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/profileLogOutId"
+            app:layout_constraintStart_toEndOf="@+id/profileLogOutId"
+            app:layout_constraintTop_toTopOf="@+id/profileLogOutId" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,7 @@
     <string name="cancel">Finished Event</string>
     <string name="un_participate">un-participate</string>
     <string name="note_back_btn">Club Notice</string>
-    <string name="clubNote">Club Notes</string>
+    <string name="clubNote">Notice Board</string>
     <string name="add_btn">add_btn</string>
     <string name="note_title">Kalipujo</string>
     <string name="note_author">Noticed from Rajesh Bhadra</string>
@@ -86,4 +86,10 @@
     <string name="all_members">All Members</string>
     <string name="email_id">rajeshbhadra62@gmail.com</string>
     <string name="user_email">useremail123@gmail.com</string>
+    <string name="wallet">Wallet</string>
+    <string name="wallet_balance">00.00 Points</string>
+    <string name="phoneNumber">+919775947315</string>
+    <string name="NoPhoneNumber">Phone number is not available</string>
+    <string name="privacy">Privacy and Security</string>
+    <string name="lout">Logout</string>
 </resources>
