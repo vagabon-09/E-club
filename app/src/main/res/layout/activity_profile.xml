@@ -19,10 +19,16 @@
             android:id="@+id/imageView7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/background_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/cover_photo" />
+            android:src="@drawable/cover_photo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
+            android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.5"
@@ -114,13 +120,13 @@
         app:layout_constraintTop_toBottomOf="@+id/ProfileUserNameId" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:alpha="0.5"
         android:id="@+id/profileWalletBtnId"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:alpha="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProfileEmailId">

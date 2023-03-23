@@ -92,4 +92,5 @@
     <string name="NoPhoneNumber">Phone number is not available</string>
     <string name="privacy">Privacy and Security</string>
     <string name="lout">Logout</string>
+    <string name="background_image">background image</string>
 </resources>
