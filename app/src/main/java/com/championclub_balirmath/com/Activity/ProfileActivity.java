@@ -3,12 +3,18 @@ package com.championclub_balirmath.com.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.Model.ProfileModel;
+import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.databinding.ActivityProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +42,25 @@ public class ProfileActivity extends AppCompatActivity {
         onClick();
         /*Fetching all data from database*/
         fetchData();
+        /*Set button click*/
+        clicked();
+    }
+
+    private void clicked() {
+        //When clicked on buttons
+        binding.addUserPhotoId.setOnClickListener(v -> {
+            showBottomSheet();
+        });
+    }
+
+    private void showBottomSheet() {
+        final Dialog bottomSheet = new Dialog(this);
+        bottomSheet.setContentView(R.layout.bottom_sheet);
+        bottomSheet.show();
+        bottomSheet.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        bottomSheet.getWindow().getAttributes().windowAnimations = R.style.BottomSheetStyle;
+        bottomSheet.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     private void check(String userId) {
@@ -67,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.profileBackId.setOnClickListener(v -> {
             finish();
         });
-        
+
         //When click on wallet button
         binding.profileWalletBtnId.setOnClickListener(v -> {
             Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();

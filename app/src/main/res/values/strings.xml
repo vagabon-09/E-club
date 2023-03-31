@@ -93,4 +93,6 @@
     <string name="privacy">Privacy and Security</string>
     <string name="lout">Logout</string>
     <string name="background_image">background image</string>
+    <string name="profile_background">Background Image</string>
+    <string name="profile_image">Profile Image</string>
 </resources>
