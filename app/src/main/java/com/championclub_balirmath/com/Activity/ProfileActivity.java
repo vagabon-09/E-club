@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.Model.ProfileModel;
@@ -56,6 +57,16 @@ public class ProfileActivity extends AppCompatActivity {
     private void showBottomSheet() {
         final Dialog bottomSheet = new Dialog(this);
         bottomSheet.setContentView(R.layout.bottom_sheet);
+        LinearLayout backgroundImage = bottomSheet.findViewById(R.id.backgroundImageId);
+        backgroundImage.setOnClickListener(v -> {
+            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+            bottomSheet.dismiss();
+        });
+        LinearLayout profileImage = bottomSheet.findViewById(R.id.changeProfileImageId);
+        profileImage.setOnClickListener(v -> {
+            Toast.makeText(this, "Clicked Profile Image", Toast.LENGTH_SHORT).show();
+            bottomSheet.dismiss();
+        });
         bottomSheet.show();
         bottomSheet.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
