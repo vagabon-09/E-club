@@ -22,6 +22,7 @@ import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.Receiver.AlarmReceiver;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityKnowMoreBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -266,4 +267,5 @@ public class KnowMoreActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
 }

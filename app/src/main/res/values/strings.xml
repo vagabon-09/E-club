@@ -95,4 +95,5 @@
     <string name="background_image">background image</string>
     <string name="profile_background">Cover Photo</string>
     <string name="profile_image">Profile Image</string>
+    <string name="retry_btn">Retry Again</string>
 </resources>

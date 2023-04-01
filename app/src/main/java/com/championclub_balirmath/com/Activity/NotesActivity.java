@@ -14,6 +14,7 @@ import com.championclub_balirmath.com.Adapter.NoteAdapter;
 import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.NoteModel;
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityNotesBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -110,7 +111,7 @@ public class NotesActivity extends AppCompatActivity {
             } else {
                 dialog.findViewById(R.id.progressBarDoneBtn).setVisibility(View.VISIBLE);
                 dialog.findViewById(R.id.doneBtnId).setVisibility(View.INVISIBLE);
-                NoteModel noteModel = new NoteModel(mAuth.getUid(), title, content,System.currentTimeMillis());
+                NoteModel noteModel = new NoteModel(mAuth.getUid(), title, content, System.currentTimeMillis());
                 reference.child("Notes").push().setValue(noteModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -138,5 +139,16 @@ public class NotesActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    protected void onResume() {
+        IsConnected connected = new IsConnected();
+        if (connected.isConnected(getApplicationContext())) {
+            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        }
+        super.onResume();
     }
 }

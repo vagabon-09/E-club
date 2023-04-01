@@ -59,18 +59,27 @@
         app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        app:civ_border_width="@dimen/_3sdp"
-        app:civ_border_color="@color/green_deep_color"
-        android:id="@+id/profileImageId"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:src="@drawable/profile"
+    <View
+        android:id="@+id/view7"
+        android:layout_width="@dimen/_96sdp"
+        android:layout_height="@dimen/_96sdp"
+        android:background="@drawable/deep_green_hole_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.19" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageId"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:src="@drawable/profile"
+        app:civ_border_color="@color/green_deep_color"
+        app:layout_constraintBottom_toBottomOf="@+id/view7"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/view7" />
 
     <View
         android:id="@+id/changePhotoBackId"
@@ -101,7 +110,6 @@
         android:id="@+id/ProfileUserNameId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
         android:fontFamily="@font/exo2"
         android:text=""
         android:textColor="@color/black"
@@ -109,7 +117,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/profileImageId"
         app:layout_constraintStart_toStartOf="@+id/profileImageId"
-        app:layout_constraintTop_toBottomOf="@+id/profileImageId" />
+        app:layout_constraintTop_toBottomOf="@+id/view7" />
 
     <TextView
         android:id="@+id/ProfileEmailId"

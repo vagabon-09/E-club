@@ -72,6 +72,8 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
                 return false;
             });
         }
+
+        //Adding code for debugging purpose
     }
 
     @Override
@@ -87,6 +89,7 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return list.size();
     }
+
 
     public static class SenderViewHolder extends RecyclerView.ViewHolder {
         TextView s_message, s_time;

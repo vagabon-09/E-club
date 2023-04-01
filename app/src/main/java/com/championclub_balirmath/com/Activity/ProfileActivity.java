@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityProfileBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -210,7 +211,7 @@ public class ProfileActivity extends AppCompatActivity {
                 binding.ProfileUserNameId.setText(name);
                 binding.ProfileEmailId.setText(email);
                 Picasso.get().load(model.getCoverPhoto()).into(binding.backgroundImage);
-                Picasso.get().load(model.getProfilePhoto()).into(binding.profileImageId);
+                Picasso.get().load(model.getProfilePhoto()).placeholder(R.drawable.profile).into(binding.profileImageId);
 
             }
 
@@ -220,5 +221,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

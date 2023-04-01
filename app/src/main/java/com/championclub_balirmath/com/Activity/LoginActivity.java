@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,5 +86,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onResume() {
+        IsConnected connected = new IsConnected();
+        if (connected.isConnected(getApplicationContext())) {
+            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        }
+        super.onResume();
+    }
 }

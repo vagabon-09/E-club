@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+
 import android.os.Bundle;
 
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.championclub_balirmath.com.Adapter.EventCardAdapter;
 import com.championclub_balirmath.com.Model.EventCardModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityHomeBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputEditText;
@@ -47,9 +50,8 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         cardRecView(); // This function is used for sending data to card recycler view in home page
         buttonCLicked();
-
-
     }
+
 
     private void buttonCLicked() {
 
@@ -78,9 +80,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.SettingBtnId.setOnClickListener(v -> { // This button for redirecting homepage to Settings page
-            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-            startActivity(intent);
+        binding.earnMoney.setOnClickListener(v -> { // This button for redirecting homepage to Settings page
+//            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+//            startActivity(intent);
+            Toast.makeText(this, "Coming Soon.", Toast.LENGTH_SHORT).show();
         });
 
         binding.DonateBtnId.setOnClickListener(v -> { // This button for redirecting homepage to Donate page
@@ -155,5 +158,21 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Check inter net is connected or not
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(HomeActivity.this, ResponseActivity.class);
+            startActivity(intent);
+        }
     }
 }

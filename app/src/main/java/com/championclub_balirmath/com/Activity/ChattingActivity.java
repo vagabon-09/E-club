@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.championclub_balirmath.com.Adapter.GroupChatAdapter;
 import com.championclub_balirmath.com.Model.GroupChatModel;
 import com.championclub_balirmath.com.Model.ProfileModel;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityChattingBinding;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -126,6 +128,7 @@ public class ChattingActivity extends AppCompatActivity {
     protected void onResume() {
         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
         super.onResume();
+
     }
 }
 

@@ -17,6 +17,7 @@ import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.WalletModel;
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityDonateBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,13 +66,13 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 WalletModel model = snapshot.getValue(WalletModel.class);
-                if (model!=null) {
+                if (model != null) {
                     balance = model.getTotalAmount();
                     upiId = model.getUpi();
                     binding.donateWalletBalanceId.setText("" + balance);
                     binding.donateWalletUpiId.setText("UPI: " + upiId);
 //                Log.d("Amount", "onDataChange: " + balance);
-                }else{
+                } else {
                     binding.donateWalletBalanceId.setText("" + "000");
                     binding.donateWalletUpiId.setText("UPI: " + "8388071823@paytm");
                 }
@@ -190,4 +191,14 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
         adapter.stopListening();
     }
 
+    @Override
+    protected void onResume() {
+        IsConnected connected = new IsConnected();
+        if (connected.isConnected(getApplicationContext())) {
+            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        }
+        super.onResume();
+    }
 }

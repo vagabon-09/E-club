@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.championclub_balirmath.com.Adapter.MembersAdapter;
 import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
+import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityMembersBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
