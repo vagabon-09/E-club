@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/background_image"
@@ -59,7 +59,9 @@
         app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        app:civ_border_width="@dimen/_3sdp"
+        app:civ_border_color="@color/green_deep_color"
         android:id="@+id/profileImageId"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_90sdp"

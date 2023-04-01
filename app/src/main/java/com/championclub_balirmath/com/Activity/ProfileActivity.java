@@ -1,12 +1,14 @@
 package com.championclub_balirmath.com.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -24,12 +26,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URI;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
+    private final int REQUEST_CODE = 100;
+    private final int PROFILE_REQUEST_CODE = 101;
+    private Uri filePath;
 
 
     @Override
@@ -58,13 +64,21 @@ public class ProfileActivity extends AppCompatActivity {
         final Dialog bottomSheet = new Dialog(this);
         bottomSheet.setContentView(R.layout.bottom_sheet);
         LinearLayout backgroundImage = bottomSheet.findViewById(R.id.backgroundImageId);
+        //Change profile background
         backgroundImage.setOnClickListener(v -> {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+            Intent backgroundIntent = new Intent();
+            backgroundIntent.setAction(Intent.ACTION_GET_CONTENT);
+            backgroundIntent.setType("image/*");
+            startActivityForResult(backgroundIntent, REQUEST_CODE);
             bottomSheet.dismiss();
+
         });
         LinearLayout profileImage = bottomSheet.findViewById(R.id.changeProfileImageId);
         profileImage.setOnClickListener(v -> {
-            Toast.makeText(this, "Clicked Profile Image", Toast.LENGTH_SHORT).show();
+            Intent profileIntent = new Intent();
+            profileIntent.setAction(Intent.ACTION_GET_CONTENT);
+            profileIntent.setType("image/*");
+            startActivityForResult(profileIntent, PROFILE_REQUEST_CODE);
             bottomSheet.dismiss();
         });
         bottomSheet.show();
@@ -72,6 +86,18 @@ public class ProfileActivity extends AppCompatActivity {
         bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         bottomSheet.getWindow().getAttributes().windowAnimations = R.style.BottomSheetStyle;
         bottomSheet.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && data != null && resultCode == RESULT_OK && data.getData() != null) {
+            filePath = data.getData();
+            binding.backgroundImage.setImageURI(filePath);
+        } else if (requestCode == PROFILE_REQUEST_CODE && data != null && resultCode == RESULT_OK && data.getData() != null) {
+            Uri profilePath = data.getData();
+            binding.profileImageId.setImageURI(profilePath);
+        }
     }
 
     private void check(String userId) {
