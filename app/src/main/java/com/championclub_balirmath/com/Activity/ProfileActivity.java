@@ -19,12 +19,16 @@ import android.widget.Toast;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.databinding.ActivityProfileBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.net.URI;
 import java.util.Objects;
@@ -36,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
     private final int REQUEST_CODE = 100;
     private final int PROFILE_REQUEST_CODE = 101;
     private Uri filePath;
+    private FirebaseStorage storage;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -43,6 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        /*Getting Firebase storage instance*/
+        storage = FirebaseStorage.getInstance();
+        database = FirebaseDatabase.getInstance();
         /*All database related work is done in database() function*/
         database();
         /*All button action is done in onclick function*/
@@ -84,7 +93,7 @@ public class ProfileActivity extends AppCompatActivity {
         bottomSheet.show();
         bottomSheet.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         bottomSheet.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        bottomSheet.getWindow().getAttributes().windowAnimations = R.style.BottomSheetStyle;
+//        bottomSheet.getWindow().getAttributes().windowAnimations = R.style.BottomSheetStyle;
         bottomSheet.getWindow().setGravity(Gravity.BOTTOM);
     }
 
@@ -94,6 +103,19 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE && data != null && resultCode == RESULT_OK && data.getData() != null) {
             filePath = data.getData();
             binding.backgroundImage.setImageURI(filePath);
+            StorageReference storageReference = storage.getReference().child("cover_photo").child(Objects.requireNonNull(mAuth.getUid()));
+            storageReference.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            database.getReference().child("Users").child(mAuth.getUid()).child("coverPhoto").setValue(uri.toString());
+                        }
+                    });
+                }
+            });
+
         } else if (requestCode == PROFILE_REQUEST_CODE && data != null && resultCode == RESULT_OK && data.getData() != null) {
             Uri profilePath = data.getData();
             binding.profileImageId.setImageURI(profilePath);

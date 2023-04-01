@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     //Custom shape imageview
     implementation 'com.makeramen:roundedimageview:2.3.0'
-        // Circle image view
+    // Circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //Firebase auth dependencies
     // Import the BoM for the Firebase platform
@@ -63,6 +63,9 @@ dependencies {
     implementation 'com.razorpay:checkout:1.6.26'
     //Firebase UI
     implementation 'com.firebaseui:firebase-ui-database:7.2.0'
+    //Firebase storage
+    implementation 'com.google.firebase:firebase-bom:31.4.0'
+    implementation 'com.google.firebase:firebase-storage'
 
 
 }
