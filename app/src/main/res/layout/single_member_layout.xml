@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/memberProfileImageView"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"

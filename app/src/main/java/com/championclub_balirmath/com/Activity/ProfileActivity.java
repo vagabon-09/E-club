@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 import java.util.Objects;
@@ -60,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         fetchData();
         /*Set button click*/
         clicked();
+
     }
 
     private void clicked() {
@@ -110,7 +112,12 @@ public class ProfileActivity extends AppCompatActivity {
                     storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            database.getReference().child("Users").child(mAuth.getUid()).child("coverPhoto").setValue(uri.toString());
+                            database.getReference().child("Users").child(mAuth.getUid()).child("coverPhoto").setValue(uri.toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(ProfileActivity.this, "Cover Photo changed.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     });
                 }
@@ -119,6 +126,24 @@ public class ProfileActivity extends AppCompatActivity {
         } else if (requestCode == PROFILE_REQUEST_CODE && data != null && resultCode == RESULT_OK && data.getData() != null) {
             Uri profilePath = data.getData();
             binding.profileImageId.setImageURI(profilePath);
+            StorageReference storageReference = storage.getReference().child("profile_pic").child(Objects.requireNonNull(mAuth.getUid()));
+            storageReference.putFile(profilePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            database.getReference().child("Users").child(mAuth.getUid()).child("profilePhoto").setValue(uri.toString())
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(ProfileActivity.this, "Profile Photo is changed.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    });
+                }
+            });
         }
     }
 
@@ -126,6 +151,9 @@ public class ProfileActivity extends AppCompatActivity {
         if (!Objects.equals(mAuth.getUid(), userId)) {
             binding.changePhotoBackId.setVisibility(View.GONE);
             binding.addUserPhotoId.setVisibility(View.GONE);
+            binding.profileLogOutBtnId.setVisibility(View.GONE);
+            binding.profilePrivacyBtnId.setVisibility(View.GONE);
+            binding.profileSettingsBtnId.setVisibility(View.GONE);
         }
     }
 
@@ -181,6 +209,8 @@ public class ProfileActivity extends AppCompatActivity {
                 email = model.getUserEmail();
                 binding.ProfileUserNameId.setText(name);
                 binding.ProfileEmailId.setText(email);
+                Picasso.get().load(model.getCoverPhoto()).into(binding.backgroundImage);
+                Picasso.get().load(model.getProfilePhoto()).into(binding.profileImageId);
 
             }
 

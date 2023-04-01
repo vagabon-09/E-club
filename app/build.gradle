@@ -39,7 +39,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-auth:21.2.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -66,6 +66,8 @@ dependencies {
     //Firebase storage
     implementation 'com.google.firebase:firebase-bom:31.4.0'
     implementation 'com.google.firebase:firebase-storage'
+    //Picasso image loader
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 }

@@ -1,7 +1,7 @@
 package com.championclub_balirmath.com.Model;
 
 public class ProfileModel {
-    private String userName, userEmail, position, userPassword;
+    private String userName, userEmail, position, userPassword, coverPhoto, profilePhoto;
 
     public ProfileModel() {
     }
@@ -13,6 +13,21 @@ public class ProfileModel {
         this.userPassword = userPassword;
     }
 
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
 
     public String getUserName() {
         return userName;
@@ -45,7 +60,6 @@ public class ProfileModel {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
-
 
 
 }

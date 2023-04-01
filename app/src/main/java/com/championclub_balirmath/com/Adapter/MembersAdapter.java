@@ -15,16 +15,12 @@ import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, MembersAdapter.MyViewHolder> {
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     public MembersAdapter(@NonNull FirebaseRecyclerOptions<ProfileModel> options) {
         super(options);
     }
@@ -35,9 +31,10 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
         holder.memberName.setText(model.getUserName());
         holder.memberBtn.setOnClickListener(v -> {
             Intent intent = new Intent(holder.memberBtn.getContext(), ProfileActivity.class);
-            intent.putExtra("uId",getRef(position).getKey());
+            intent.putExtra("uId", getRef(position).getKey());
             holder.memberBtn.getContext().startActivity(intent);
         });
+        Picasso.get().load(model.getProfilePhoto()).into(holder.memberImage);
     }
 
     @NonNull
@@ -48,7 +45,7 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        RoundedImageView memberImage;
+        CircleImageView memberImage;
         TextView memberName;
         TextView memberEmail;
         CardView memberBtn;
@@ -59,6 +56,8 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
             memberName = itemView.findViewById(R.id.memberNameId);
             memberEmail = itemView.findViewById(R.id.memberEmailId);
             memberBtn = itemView.findViewById(R.id.memberCardBtnId);
+            memberImage = itemView.findViewById(R.id.memberProfileImageView);
+
         }
     }
 }

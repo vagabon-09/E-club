@@ -65,12 +65,16 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 WalletModel model = snapshot.getValue(WalletModel.class);
-                assert model != null;
-                balance = model.getTotalAmount();
-                upiId = model.getUpi();
-                binding.donateWalletBalanceId.setText("" + balance);
-                binding.donateWalletUpiId.setText("UPI: " + upiId);
-                Log.d("Amount", "onDataChange: " + balance);
+                if (model!=null) {
+                    balance = model.getTotalAmount();
+                    upiId = model.getUpi();
+                    binding.donateWalletBalanceId.setText("" + balance);
+                    binding.donateWalletUpiId.setText("UPI: " + upiId);
+//                Log.d("Amount", "onDataChange: " + balance);
+                }else{
+                    binding.donateWalletBalanceId.setText("" + "000");
+                    binding.donateWalletUpiId.setText("UPI: " + "8388071823@paytm");
+                }
             }
 
             @Override
