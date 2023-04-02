@@ -32,7 +32,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.net.URI;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -51,6 +50,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        /*starting facebook Shimmer effect*/
+        binding.profileShimmerId.startShimmer();
+
         /*Getting Firebase storage instance*/
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -63,6 +65,14 @@ public class ProfileActivity extends AppCompatActivity {
         /*Set button click*/
         clicked();
 
+
+    }
+
+    private void manageEffect(boolean condition) {
+        if (condition) {
+            binding.profileShimmerId.stopShimmer();
+            binding.profileShimmerId.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void clicked() {
@@ -203,15 +213,21 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ProfileModel model = snapshot.getValue(ProfileModel.class);
-                assert model != null;
-                String name;
-                String email;
-                name = model.getUserName();
-                email = model.getUserEmail();
-                binding.ProfileUserNameId.setText(name);
-                binding.ProfileEmailId.setText(email);
-                Picasso.get().load(model.getCoverPhoto()).into(binding.backgroundImage);
-                Picasso.get().load(model.getProfilePhoto()).placeholder(R.drawable.profile).into(binding.profileImageId);
+                if (model != null) {
+                    String name;
+                    String email;
+                    name = model.getUserName();
+                    email = model.getUserEmail();
+                    binding.ProfileUserNameId.setText(name);
+                    binding.ProfileEmailId.setText(email);
+                    Picasso.get().load(model.getCoverPhoto()).into(binding.backgroundImage);
+                    Picasso.get().load(model.getProfilePhoto()).placeholder(R.drawable.profile).into(binding.profileImageId);
+                    /*In this method we will manage loading effect (facebook shimmer effect)*/
+                    manageEffect(true);
+                } else {
+                    manageEffect(false);
+                }
+
 
             }
 

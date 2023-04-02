@@ -5,12 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
 
 import com.championclub_balirmath.com.Adapter.MembersAdapter;
-import com.championclub_balirmath.com.Model.BalanceHistoryModal;
 import com.championclub_balirmath.com.Model.ProfileModel;
-import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.IsConnected;
 import com.championclub_balirmath.com.databinding.ActivityMembersBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -19,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MembersActivity extends AppCompatActivity {
     private ActivityMembersBinding binding;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
     private MembersAdapter adapter;
 
@@ -28,6 +25,8 @@ public class MembersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMembersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.memberShimmerId.setVisibility(View.GONE);
+        binding.memberRecView.setVisibility(View.VISIBLE);
         /*In this function we are going to perform all database operation work*/
         dataBase();
         /*In this function setRecyclerView() we are going to set all the operation of recyclerview*/
@@ -37,13 +36,11 @@ public class MembersActivity extends AppCompatActivity {
     }
 
     private void onClick() {
-        binding.memberPageBack.setOnClickListener(v -> {
-            finish();
-        });
+        binding.memberPageBack.setOnClickListener(v -> finish());
     }
 
     private void dataBase() {
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
     }
 

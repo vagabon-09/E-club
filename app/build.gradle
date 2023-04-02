@@ -68,6 +68,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     //Picasso image loader
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //Shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
 
 
 }

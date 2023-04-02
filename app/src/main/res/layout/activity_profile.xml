@@ -34,8 +34,7 @@
             android:alpha="0.5"
             android:background="@drawable/profile_cover_shape"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/profile_backId"
@@ -106,17 +105,61 @@
         app:layout_constraintTop_toTopOf="@+id/changePhotoBackId"
         app:layout_constraintVertical_bias="0.32999998" />
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/profileShimmerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/profileImageId"
+        app:layout_constraintStart_toStartOf="@+id/profileImageId"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:shimmer_auto_start="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/nameLoadingShimmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo2"
+                android:text="@string/loading_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/emailLoaingShimmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/exo2"
+                android:text="@string/loading_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameLoadingShimmer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <TextView
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/ProfileUserNameId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo2"
-        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/profileImageId"
-        app:layout_constraintStart_toStartOf="@+id/profileImageId"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="@+id/view7"
         app:layout_constraintTop_toBottomOf="@+id/view7" />
 
     <TextView
@@ -124,22 +167,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo2"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/ProfileUserNameId"
-        app:layout_constraintStart_toStartOf="@+id/ProfileUserNameId"
+        app:layout_constraintEnd_toEndOf="@+id/profileShimmerId"
+        app:layout_constraintStart_toStartOf="@+id/profileShimmerId"
         app:layout_constraintTop_toBottomOf="@+id/ProfileUserNameId" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profileWalletBtnId"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:alpha="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileEmailId">
+        app:layout_constraintTop_toBottomOf="@+id/profileShimmerId">
 
         <ImageView
             android:id="@+id/imageView9"

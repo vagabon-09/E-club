@@ -96,4 +96,6 @@
     <string name="profile_background">Cover Photo</string>
     <string name="profile_image">Profile Image</string>
     <string name="retry_btn">Retry Again</string>
+    <string name="loading_name">Loading Name.....</string>
+    <string name="loading_email">Loading email....</string>
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.championclub_balirmath.com.Activity.ProfileActivity;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
@@ -35,6 +37,8 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
             holder.memberBtn.getContext().startActivity(intent);
         });
         Picasso.get().load(model.getProfilePhoto()).into(holder.memberImage);
+
+
     }
 
     @NonNull
@@ -49,6 +53,8 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
         TextView memberName;
         TextView memberEmail;
         CardView memberBtn;
+        ShimmerFrameLayout memberShimmer;
+        RecyclerView memberRecView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +63,8 @@ public class MembersAdapter extends FirebaseRecyclerAdapter<ProfileModel, Member
             memberEmail = itemView.findViewById(R.id.memberEmailId);
             memberBtn = itemView.findViewById(R.id.memberCardBtnId);
             memberImage = itemView.findViewById(R.id.memberProfileImageView);
+            memberShimmer = itemView.findViewById(R.id.memberShimmerId);
+            memberRecView = itemView.findViewById(R.id.memberRecView);
 
         }
     }
