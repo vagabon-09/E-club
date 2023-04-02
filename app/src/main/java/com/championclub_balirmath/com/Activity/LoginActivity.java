@@ -86,13 +86,17 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
     @Override
     protected void onResume() {
-        IsConnected connected = new IsConnected();
-        if (connected.isConnected(getApplicationContext())) {
-            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(LoginActivity.this, ResponseActivity.class);
+            startActivity(intent);
         }
         super.onResume();
     }

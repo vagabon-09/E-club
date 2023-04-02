@@ -223,8 +223,18 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
     @Override
     protected void onResume() {
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(ProfileActivity.this, ResponseActivity.class);
+            startActivity(intent);
+        }
         super.onResume();
     }
 }

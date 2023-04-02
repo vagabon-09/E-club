@@ -76,7 +76,7 @@ public class KnowMoreActivity extends AppCompatActivity {
                 EventCardModel model = snapshot.getValue(EventCardModel.class);
                 assert model != null;
                 String uid = model.getCreatorId();
-                if (Objects.equals(uid, mAuth.getUid())){
+                if (Objects.equals(uid, mAuth.getUid())) {
                     binding.cancelEventBtnId.setVisibility(View.VISIBLE);
                 }
             }
@@ -267,5 +267,17 @@ public class KnowMoreActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+    @Override
+    protected void onResume() {
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(KnowMoreActivity.this, ResponseActivity.class);
+            startActivity(intent);
+        }
+        super.onResume();
+    }
 }

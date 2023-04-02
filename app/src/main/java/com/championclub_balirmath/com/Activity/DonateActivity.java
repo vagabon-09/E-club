@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -37,10 +38,8 @@ import java.util.Date;
 import java.util.Objects;
 
 public class DonateActivity extends AppCompatActivity implements PaymentResultListener {
-    private Checkout checkout;
     ActivityDonateBinding binding;
     private int amount = 0;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
     private BalanceHistoryAdapter adapter;
     private long balance = 0;
@@ -51,7 +50,7 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
         super.onCreate(savedInstanceState);
         binding = ActivityDonateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         amount = 5000;
 
@@ -116,7 +115,7 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
     }
 
     private void makePayment() {
-        checkout = new Checkout();
+        Checkout checkout = new Checkout();
         Checkout.preload(this);
         checkout.setKeyID("rzp_test_76gfAQItSxgcgk");
         checkout.setImage(R.drawable.bank_black_512);
@@ -161,14 +160,10 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
         });
 
         // Updating wallet balance
-        reference.child("Account").child("Wallet").child("totalAmount").setValue(balance += (amount / 100)).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onSuccess(Void unused) {
+        reference.child("Account").child("Wallet").child("totalAmount").setValue(balance += (amount / 100)).addOnSuccessListener(unused -> {
 //                Log.d("balance", "onSuccess: "+balance);
 //                Log.d("amount", "onSuccess: "+amount/100);
-                binding.donateWalletBalanceId.setText("" + balance);
-            }
+            binding.donateWalletBalanceId.setText("" + balance);
         });
 
     }
@@ -191,13 +186,17 @@ public class DonateActivity extends AppCompatActivity implements PaymentResultLi
         adapter.stopListening();
     }
 
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
     @Override
     protected void onResume() {
-        IsConnected connected = new IsConnected();
-        if (connected.isConnected(getApplicationContext())) {
-            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(DonateActivity.this, ResponseActivity.class);
+            startActivity(intent);
         }
         super.onResume();
     }

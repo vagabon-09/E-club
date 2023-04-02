@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -141,13 +142,17 @@ public class NotesActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
     @Override
     protected void onResume() {
-        IsConnected connected = new IsConnected();
-        if (connected.isConnected(getApplicationContext())) {
-            Toast.makeText(this, "Internet is connected.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Internet is not connected.", Toast.LENGTH_SHORT).show();
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(NotesActivity.this, ResponseActivity.class);
+            startActivity(intent);
         }
         super.onResume();
     }

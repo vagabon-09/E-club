@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -124,9 +125,19 @@ public class ChattingActivity extends AppCompatActivity {
 
     }
 
+    private boolean isConnected() {
+        IsConnected connected = new IsConnected();
+        return connected.isConnected(getApplicationContext());
+    }
+
     @Override
     protected void onResume() {
         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
+        boolean internet = isConnected();
+        if (!internet) {
+            Intent intent = new Intent(ChattingActivity.this, ResponseActivity.class);
+            startActivity(intent);
+        }
         super.onResume();
 
     }
