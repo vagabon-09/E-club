@@ -1,8 +1,8 @@
 package com.championclub_balirmath.com.Adapter;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.championclub_balirmath.com.Model.GroupChatModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -57,7 +62,7 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
             ((ReciverViewHolder) holder).r_time.setText(time);
             ((ReciverViewHolder) holder).r_name.setText(list.get(position).getName());
             ((ReciverViewHolder) holder).r_messageBubble.setOnLongClickListener(v -> {
-                Toast.makeText(context, "Receiver btn is Clicked....", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Receiver btn is Clicked....", Toast.LENGTH_SHORT).show();
                 return false;
             });
 
@@ -67,13 +72,38 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
             ((SenderViewHolder) holder).s_message.setText(list.get(position).getMessage());
             ((SenderViewHolder) holder).s_time.setText(time);
             ((SenderViewHolder) holder).s_messageBubble.setOnLongClickListener(v -> {
-                Toast.makeText(context, "Sender message Clicked....", Toast.LENGTH_SHORT).show();
-
+                deleteDialog(position);
                 return false;
             });
         }
 
         //Adding code for debugging purpose
+    }
+
+    private void deleteDialog(int position) {
+        AlertDialog.Builder messageFeature = new AlertDialog.Builder(context);
+        messageFeature.setMessage("Do you want to delete the message ?");
+        messageFeature.setCancelable(true);
+        messageFeature.setPositiveButton("Delete", (dialog, which) -> {
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            database.getReference().child("club_chat").orderByChild("message").equalTo(list.get(position).getMessage()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                        snapshot1.getRef().removeValue();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        //      Log.d("key", "onClick: "+database.getReference().child("club_chat").getKey());
+        });
+        messageFeature.setNegativeButton("Cancel", (dialog, which) -> Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show());
+        messageFeature.show();
     }
 
     @Override
