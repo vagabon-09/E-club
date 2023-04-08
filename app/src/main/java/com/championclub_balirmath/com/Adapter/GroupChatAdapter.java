@@ -57,7 +57,7 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
             ((ReciverViewHolder) holder).r_time.setText(time);
             ((ReciverViewHolder) holder).r_name.setText(list.get(position).getName());
             ((ReciverViewHolder) holder).r_messageBubble.setOnLongClickListener(v -> {
-                Toast.makeText(context, "Clicked....", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Receiver btn is Clicked....", Toast.LENGTH_SHORT).show();
                 return false;
             });
 
@@ -67,7 +67,7 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
             ((SenderViewHolder) holder).s_message.setText(list.get(position).getMessage());
             ((SenderViewHolder) holder).s_time.setText(time);
             ((SenderViewHolder) holder).s_messageBubble.setOnLongClickListener(v -> {
-                Toast.makeText(context, "Clicked....", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Sender message Clicked....", Toast.LENGTH_SHORT).show();
 
                 return false;
             });
