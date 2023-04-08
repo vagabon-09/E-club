@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -36,6 +38,12 @@ public class ChattingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onResume();
+            }
+        }, 50);
         binding = ActivityChattingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // Removing top status bar
@@ -47,10 +55,11 @@ public class ChattingActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance(); // Fetching database instance
         final ArrayList<GroupChatModel> modelArrayList = new ArrayList<>();// Fetching all model array list
         adapter = new GroupChatAdapter(modelArrayList, this);//accessing adapter
+        getValue(modelArrayList, adapter);// This function is used to fetch data form database
         binding.messageChattingRecView.setAdapter(adapter);// Setting adapter in recyclerview
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);// Declaring layout manager
         binding.messageChattingRecView.setLayoutManager(layoutManager);// Setting layout in recyclerview
-        getValue(modelArrayList, adapter);// This function is used to fetch data form database
+
     }
 
     private void getValue(ArrayList<GroupChatModel> modelArrayList, GroupChatAdapter adapter) {
@@ -69,7 +78,7 @@ public class ChattingActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e("MessageGetError", "onCancelled: " + error);
             }
         });
 

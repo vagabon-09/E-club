@@ -1,8 +1,10 @@
 package com.championclub_balirmath.com.Adapter;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.championclub_balirmath.com.Model.GroupChatModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.DateTime;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,9 +36,11 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
     final int SENDER_VIEW_TYPE = 1;
     final int RECEIVER_VIEW_TYPE = 2;
 
+    @SuppressLint("NotifyDataSetChanged")
     public GroupChatAdapter(ArrayList<GroupChatModel> list, Context context) {
         this.list = list;
         this.context = context;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -72,12 +76,12 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
             ((SenderViewHolder) holder).s_message.setText(list.get(position).getMessage());
             ((SenderViewHolder) holder).s_time.setText(time);
             ((SenderViewHolder) holder).s_messageBubble.setOnLongClickListener(v -> {
+                // Basically delete dialog function is a function to perform message delete operation
                 deleteDialog(position);
                 return false;
             });
         }
 
-        //Adding code for debugging purpose
     }
 
     private void deleteDialog(int position) {
@@ -87,20 +91,21 @@ public class GroupChatAdapter extends RecyclerView.Adapter {
         messageFeature.setPositiveButton("Delete", (dialog, which) -> {
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            database.getReference().child("club_chat").orderByChild("message").equalTo(list.get(position).getMessage()).addListenerForSingleValueEvent(new ValueEventListener() {
+            database.getReference().child("club_chat").orderByChild("timestamp").equalTo(list.get(position).getTimestamp()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
-                        snapshot1.getRef().removeValue();
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        snapshot1.getRef().removeValue(); // Getting reference of the message in data base and deleting data from firebase
+                        list.remove(position); // Remove method used to remove specific position form the list not from the data base
+//                        notifyItemChanged(position);
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Log.e("MessageDeleteError", "onCancelled: There have some error when sending message error is: " + error);
                 }
             });
-        //      Log.d("key", "onClick: "+database.getReference().child("club_chat").getKey());
         });
         messageFeature.setNegativeButton("Cancel", (dialog, which) -> Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show());
         messageFeature.show();
