@@ -51,8 +51,6 @@ public class ChattingActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);// Declaring layout manager
         binding.messageChattingRecView.setLayoutManager(layoutManager);// Setting layout in recyclerview
         getValue(modelArrayList, adapter);// This function is used to fetch data form database
-//        int position = Objects.requireNonNull(binding.messageChattingRecView.getAdapter()).getItemCount() - 1;
-//        binding.messageChattingRecView.scrollToPosition(position);
     }
 
     private void getValue(ArrayList<GroupChatModel> modelArrayList, GroupChatAdapter adapter) {
@@ -75,11 +73,6 @@ public class ChattingActivity extends AppCompatActivity {
             }
         });
 
-//        FirebaseRecyclerOptions<GroupChatModel> options =
-//                new FirebaseRecyclerOptions.Builder<GroupChatModel>()
-//                        .setQuery(database.getReference().child("club_chat"),GroupChatModel.class)
-//                        .build();
-//        GroupChatAdapter adapter1 = new GroupChatAdapter(options);
 
     }
 
@@ -112,8 +105,6 @@ public class ChattingActivity extends AppCompatActivity {
                     GroupChatModel model1 = new GroupChatModel(message, senderId, userName);//sending all data to model class
                     model1.setTimestamp(new Date().getTime());// setting data&time
                     DatabaseReference reference = database.getReference();// getting database reference
-
-
                     database.getReference().child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> { //sending value to firebase
                         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
                     });
