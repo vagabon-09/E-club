@@ -54,6 +54,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                style="@style/colorMode"
                 android:id="@+id/eventNameId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +62,6 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/exo2"
                 android:text="@string/eventPageName"
-                android:textColor="@color/black"
                 android:textSize="@dimen/_18sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +142,7 @@
                 app:layout_constraintTop_toTopOf="@+id/participateId" />
 
             <ImageView
+                style="@style/colorMode"
                 android:id="@+id/eventReminderBtnId"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
@@ -152,6 +153,7 @@
                 app:layout_constraintTop_toTopOf="@+id/eventNameId" />
 
             <ImageView
+                style="@style/colorMode"
                 android:id="@+id/eventReminderBtnId2"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"

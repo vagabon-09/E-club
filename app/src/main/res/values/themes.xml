@@ -18,9 +18,16 @@
         <item name="cornerSizeBottomLeft">75dp</item>
         <item name="cornerFamilyBottomLeft">cut</item>
     </style>
-    
+
     <style name="BottomSheetStyle">
         <item name="android:windowEnterAnimation">@anim/bottom_sheet_up</item>
         <item name="android:windowExitAnimation">@anim/bottom_sheet_in</item>
     </style>
+
+    <style name="colorMode" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/black</item>
+        <item name="iconTint">@color/black</item>
+    </style>
+
+
 </resources>

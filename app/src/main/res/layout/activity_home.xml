@@ -69,6 +69,7 @@
             <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.cardview.widget.CardView
+
                 android:id="@+id/navigationCard"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_140sdp"
@@ -85,6 +86,7 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -122,13 +124,14 @@
                             app:layout_constraintTop_toTopOf="@+id/eventBtnId" />
 
                         <TextView
+                            style="@style/colorMode"
                             android:id="@+id/event_organise_icon_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/event"
-                            android:textColor="@color/black"
+
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/eventBtnId"
@@ -169,13 +172,13 @@
                             app:layout_constraintTop_toTopOf="@+id/memberCircleId" />
 
                         <TextView
+                            style="@style/colorMode"
                             android:id="@+id/memberTitleId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/profile"
-                            android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/memberCircleId"
@@ -223,7 +226,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/members"
-                            android:textColor="@color/black"
+                           style="@style/colorMode"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/userCircleId"
@@ -272,7 +275,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/note"
-                            android:textColor="@color/black"
+                            style="@style/colorMode"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/noteCircleId"
@@ -322,7 +325,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/club_wallet"
-                            android:textColor="@color/black"
+                            style="@style/colorMode"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/donateCircleId"
@@ -371,7 +374,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/exo2"
                             android:text="@string/earn"
-                            android:textColor="@color/black"
+                            style="@style/colorMode"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/settingCircleId"
@@ -426,7 +429,7 @@
                         android:layout_marginStart="@dimen/_13sdp"
                         android:fontFamily="@font/exo2"
                         android:text="@string/active_events"
-                        android:textColor="@color/black"
+                        style="@style/colorMode"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/view2"

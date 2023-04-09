@@ -38,12 +38,7 @@ public class ChattingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                onResume();
-            }
-        }, 50);
+        new Handler().postDelayed(this::onResume, 50);
         binding = ActivityChattingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // Removing top status bar
@@ -62,6 +57,7 @@ public class ChattingActivity extends AppCompatActivity {
 
     }
 
+    // Here set value is basically for sending messages and required information from the chatting activity
     private void getValue(ArrayList<GroupChatModel> modelArrayList, GroupChatAdapter adapter) {
         database.getReference().child("club_chat").addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -96,7 +92,15 @@ public class ChattingActivity extends AppCompatActivity {
     }
 
     private void sendData() {
-
+        // If you want to add this feature then just uncomment the code part
+      /* here we performing a logic , if chatting edit text get focused then we will go to the end of the message which
+        are displaying in teh recyclerview */
+//        binding.messageEditId.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onResume();
+//            }
+//        });
         String senderId = FirebaseAuth.getInstance().getUid();// Getting user id using firebase auth
         String message = binding.messageEditId.getText().toString();//getting text from edit text
         binding.messageEditId.setText("");//Setting edit text empty
@@ -114,7 +118,7 @@ public class ChattingActivity extends AppCompatActivity {
                     GroupChatModel model1 = new GroupChatModel(message, senderId, userName);//sending all data to model class
                     model1.setTimestamp(new Date().getTime());// setting data&time
                     DatabaseReference reference = database.getReference();// getting database reference
-                    database.getReference().child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> { //sending value to firebase
+                    reference.child("club_chat").push().setValue(model1).addOnSuccessListener(unused -> { //sending value to firebase
                         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
                     });
                 }
@@ -137,7 +141,10 @@ public class ChattingActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        /* This line will automatically scroll down the recyclerview to the last or you can say adapter.getItemCount()-1 position*/
         binding.messageChattingRecView.scrollToPosition(adapter.getItemCount() - 1);// automatically scroll to new message
+        /*In the below line isConnected function checking is the user connected with the internet it can be mobile network or with wifi , if the user is connected then return true and other wise
+         * return false  */
         boolean internet = isConnected();
         if (!internet) {
             Intent intent = new Intent(ChattingActivity.this, ResponseActivity.class);
