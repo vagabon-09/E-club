@@ -57,13 +57,14 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/exo2"
                 android:text="@string/club_wallet"
-                android:textColor="@color/black"
+                style="@style/colorMode"
                 android:textSize="@dimen/_17sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                style="@style/colorMode"
                 android:id="@+id/imageView5"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
@@ -79,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="₹"
-                android:textColor="@color/black"
+                style="@style/colorMode"
                 android:textSize="@dimen/_20sdp"
                 app:layout_constraintEnd_toEndOf="@+id/textView11"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -92,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:text="@string/balance"
-                android:textColor="@color/black"
+               style="@style/colorMode"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView12"
                 app:layout_constraintStart_toEndOf="@+id/textView12"
@@ -110,6 +111,7 @@
                 app:layout_constraintVertical_bias="0.07999998" />
 
             <ImageView
+                style="@style/colorMode"
                 android:id="@+id/ClipBordId"
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"

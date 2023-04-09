@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_marginTop="@dimen/_5sdp"
             android:id="@+id/DonateHistoryNameId"
+            style="@style/colorMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
             android:text="@string/donateHistoryName"
-            android:textColor="@color/black"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/DonateAmountId"
@@ -47,10 +47,10 @@
             app:layout_constraintTop_toTopOf="@+id/DonateHistoryNameId" />
 
         <TextView
-            android:layout_marginBottom="@dimen/_5sdp"
             android:id="@+id/DonateTimeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:text="@string/monday_10_30_pm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/DonateAmountId"
