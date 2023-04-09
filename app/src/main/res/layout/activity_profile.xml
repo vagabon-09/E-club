@@ -125,9 +125,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/exo2"
                 android:text="@string/loading_name"
-                android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -139,6 +139,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/exo2"
+                android:textColor="@color/black"
                 android:text="@string/loading_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +164,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view7" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/ProfileEmailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
