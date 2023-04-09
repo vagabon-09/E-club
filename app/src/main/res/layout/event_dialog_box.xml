@@ -29,6 +29,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:textColorHint="#6D6D6D"
         app:boxCornerRadiusBottomEnd="@dimen/_15sdp"
         app:boxCornerRadiusBottomStart="@dimen/_15sdp"
         app:boxCornerRadiusTopEnd="@dimen/_15sdp"
@@ -45,6 +46,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/create_event_name"
             android:paddingStart="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#6D6D6D"
             tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,6 +86,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:textColorHint="#6D6D6D"
         app:boxCornerRadiusBottomEnd="@dimen/_15sdp"
         app:boxCornerRadiusBottomStart="@dimen/_15sdp"
         app:boxCornerRadiusTopEnd="@dimen/_15sdp"
@@ -98,7 +102,9 @@
             android:id="@+id/createOrganiserNameIdInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_organiser" />
+            android:hint="@string/create_organiser"
+            android:textColor="@color/black"
+            android:textColorHint="#6D6D6D" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton

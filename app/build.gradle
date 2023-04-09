@@ -70,7 +70,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     //Shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-
+    // Day Night mode
+    implementation 'com.github.vimalcvs:Day-Night-Switch:1.0.3'
 
 
 }

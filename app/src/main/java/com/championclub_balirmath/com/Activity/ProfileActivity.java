@@ -3,14 +3,19 @@ package com.championclub_balirmath.com.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -19,6 +24,7 @@ import android.widget.Toast;
 import com.championclub_balirmath.com.Model.ProfileModel;
 import com.championclub_balirmath.com.R;
 import com.championclub_balirmath.com.ReusableCode.IsConnected;
+import com.championclub_balirmath.com.ReusableCode.IsDarkMode;
 import com.championclub_balirmath.com.databinding.ActivityProfileBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +37,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.vimalcvs.switchdn.DayNightSwitch;
+import com.vimalcvs.switchdn.DayNightSwitchListener;
 
 import java.util.Objects;
 
@@ -43,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Uri filePath;
     private FirebaseStorage storage;
     private FirebaseDatabase database;
+    private DayNightSwitch darkMode;
+    IsDarkMode mode;
 
 
     @Override
@@ -52,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         /*starting facebook Shimmer effect*/
         binding.profileShimmerId.startShimmer();
-
         /*Getting Firebase storage instance*/
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -60,12 +69,22 @@ public class ProfileActivity extends AppCompatActivity {
         database();
         /*All button action is done in onclick function*/
         onClick();
+        /*We are creating a object of IsDarkMode class for future use
+        * in this function we created a shared preferences for storing our required value and saving it in private mode
+        * */
+        mode = new IsDarkMode();
         /*Fetching all data from database*/
         fetchData();
         /*Set button click*/
         clicked();
 
 
+    }
+
+    private boolean isDarkMode() {
+        SharedPreferences sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
+        @SuppressLint("CommitPrefEdits") final SharedPreferences.Editor editor = sharedPreferences.edit();
+        return sharedPreferences.getBoolean("isDarkModeOn", false);
     }
 
     private void manageEffect(boolean condition) {
@@ -79,6 +98,41 @@ public class ProfileActivity extends AppCompatActivity {
         //When clicked on buttons
         binding.addUserPhotoId.setOnClickListener(v -> {
             showBottomSheet();
+        });
+        binding.profileSettingsBtnId.setOnClickListener(v -> {
+            Dialog setting = new Dialog(this);
+            setting.setContentView(R.layout.setting_dark_mode);
+            darkMode = setting.findViewById(R.id.nightModeId);
+            darkModeBtn(darkMode);
+            setting.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            setting.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            setting.getWindow().setGravity(Gravity.BOTTOM);
+            setting.show();
+        });
+    }
+
+    /* In this function we are implementing night mode code here .setListener is the function to lisent the night mode is on or not */
+    private void darkModeBtn(DayNightSwitch darkMode) {
+        SharedPreferences sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
+        boolean check = sharedPreferences.getBoolean("darkMode", false);
+        if (check) {
+            darkMode.setIsNight(true);
+        } else {
+            darkMode.setIsNight(false);
+        }
+
+        darkMode.setListener(new DayNightSwitchListener() {
+            @Override
+            public void onSwitch(boolean is_night) {
+                if (is_night) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    mode.darkMode(true, "darkMode", getApplicationContext());
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    mode.darkMode(false, "darkMode", getApplicationContext());
+
+                }
+            }
         });
     }
 

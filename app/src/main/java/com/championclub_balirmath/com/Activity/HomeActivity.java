@@ -1,6 +1,7 @@
 package com.championclub_balirmath.com.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -9,10 +10,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -44,6 +47,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //Checking is dark mode enable or not
+        SharedPreferences sharedPreferences = getSharedPreferences("mode", MODE_PRIVATE);
+        boolean check = sharedPreferences.getBoolean("darkMode", false);
+        Log.d("DarkModeActive", "onCreate: " + check);
+        if (check) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         //All firebase operation
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference();

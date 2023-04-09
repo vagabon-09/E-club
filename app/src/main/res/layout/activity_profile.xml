@@ -253,21 +253,22 @@
         app:layout_constraintTop_toBottomOf="@+id/profilePhoneNumberBtnId">
 
         <ImageView
+            app:tint="#C4000000"
             android:id="@+id/profileSettingsIconId"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_10sdp"
-            android:src="@drawable/settings_black_512"
+            android:src="@drawable/day_night_black_512"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/profileSettingsId"
+            android:id="@+id/DayNightModeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
-            android:text="@string/settings"
+            android:text="@string/dayNightMode"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="@+id/profileSettingsIconId"

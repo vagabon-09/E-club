@@ -98,4 +98,5 @@
     <string name="retry_btn">Retry Again</string>
     <string name="loading_name">Loading Name.....</string>
     <string name="loading_email">Loading email....</string>
+    <string name="dayNightMode">Day Night</string>
 </resources>
