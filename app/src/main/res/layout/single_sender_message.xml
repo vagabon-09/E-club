@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/senderMessageTemplateId"
     android:layout_width="wrap_content"
-    android:layout_marginBottom="@dimen/_5sdp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_5sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -20,10 +20,10 @@
         android:minHeight="@dimen/_20sdp">
 
         <TextView
-            android:layout_marginStart="@dimen/_5sdp"
             android:id="@+id/SenderMessageId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/exo2"
             android:maxWidth="@dimen/_200sdp"
@@ -38,12 +38,13 @@
 
 
         <TextView
-            android:layout_marginStart="@dimen/_5sdp"
             android:id="@+id/SenderTimeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:text="@string/SenderTime"
+            android:textColor="#6D6D6D"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

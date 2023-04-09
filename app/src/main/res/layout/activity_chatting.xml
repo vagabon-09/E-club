@@ -155,6 +155,8 @@
             app:layout_constraintEnd_toStartOf="@+id/messageSendBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/deep_ash_circle"
             tools:ignore="RtlSymmetry" />
 
         <View
