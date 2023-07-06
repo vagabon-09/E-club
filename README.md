@@ -1,16 +1,4 @@
 # Club Management Android Application
-  <div style="
-    width:100%;
-    height:auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    ">
-
- <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/60adf484-acc1-4fe9-8fee-891d6667bcf0" alt="Home" width="250"/>
-    
-  </div>
- 
 
 The Club Management Android Application is a feature-rich platform designed to streamline club activities and enhance communication among members. This application provides various features including event management, member profiles, online payment integration, group chat messaging, notice board, night mode, and more.
 
@@ -36,14 +24,12 @@ The Club Management Android Application is a feature-rich platform designed to s
 
 ## Screenshots
 
-<div align="center">
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/d58b3e7c-9032-4b6f-b177-f4753d07cefd" alt="Home" width="250"/>
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/e9278871-d7de-471c-ba96-371098250a4b" alt="Event Create Card" width="250"/>
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/732e6c51-2565-45c8-8ec1-733b1e81e3ce" alt="Event Participate Card" width="250"/>
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/25686c2d-7a82-4bec-b598-748b4e4bf814" alt="Message Page" width="250"/>
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/b63049fe-24ad-49f2-be66-1b728dcdb17a" alt="Payment Page" width="250"/>
-  <img src="https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/b7e4be68-fd69-4bb0-b725-d70b62107a3a" alt="Notice Board" width="250"/>
-</div>
+
+
+![all_in_one-PhotoRoom png-PhotoRoom](https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/df36f358-b34e-477c-afa5-1a34ba180d14)
+
+
+
 
 
 ## Installation
