@@ -29,7 +29,7 @@ The Club Management Android Application is a feature-rich platform designed to s
 ![all_in_one-PhotoRoom png-PhotoRoom](https://github.com/vagabon-09/Club-Managment-System-public/assets/89797141/df36f358-b34e-477c-afa5-1a34ba180d14)
 
 
-
+[Demo Video](https://www.linkedin.com/feed/update/urn:li:activity:7082799141348679680/)
 
 
 ## Installation
